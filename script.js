@@ -1,4 +1,4 @@
-import {handleDate,handleTime} from './helperFun.js'
+import {getWeatherData, handleDate,handleTime} from './helperFun.js'
 
 
 function setUp(){
@@ -21,6 +21,7 @@ function setUp(){
 
   handleTime()
   handleDate()
+  getWeatherData("3e1a7d22a5f4a742dce10a2424e89952","Rohtak")
 }
 
 
