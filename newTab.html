@@ -6,6 +6,7 @@
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
 </head>
 <body>
+    
     <div class="container">
         <div id="controlPanel" class="blurBg">
             <ul>
@@ -14,18 +15,33 @@
                 <li><i onclick="handleClick(event,{key:'clock'})" class="bx bx-time"></i>Clock</li>
                 <li><i onclick="handleClick(event,{key:'edit'})" class="bx bx-edit"></i>Edit</li>
                 <li><i onclick="handleClick(event,{key:'setting'})" class="bx bxs-cog"></i>sys</li>
-                <li><a href=""><i onclick="handleClick(event)" class='bx bxl-github' ></i></a>Repo</li>
+                <li><a href="https://github.com/Freak644/Glassy_DashBoard"><i onclick="handleClick(event)" class='bx bxl-github' ></i></a>Repo</li>
             </ul>
         </div>
 
         <div class="widgets">
             
             <div class="blurBg search">
-
+                <p id="greet">Wellcome! Freak</p>
+                <form action="" onsubmit="">
+                    <input type="text" name="query" placeholder="Find or Enter URL">
+                    <i class="bx bx-search-alt"></i>
+                </form>
             </div>
 
             <div class="blurBg clock">
-
+                <div id="dateCol"></div>
+                <div  id="clock-body" class="blurBg" >
+                    <span id="thre" class="cont">3</span>
+                    <span id="six" class="cont">6</span>
+                    <span id="nin" class="cont">9</span>
+                    <span id="twe" class="cont">12</span>
+                   
+                    <div id="midleC"></div>
+                    <div id="sec" class="ned"><h3></h3></div>
+                    <div id="min" class="ned"><h3></h3></div>
+                    <div id="ho" class="ned"> <h3></h3></div>
+                </div>
             </div>
             
             <div class="blurBg tasksSduler">
@@ -41,7 +57,6 @@
             </div>
         </div>
     </div>
-    <script src="./script.js"></script>
-    <script src="./animation.js"></script>
+    <script type="module" src="./script.js"></script>
 </body>
 </html>
