@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+:root{
+    --bg-color:rgba(255, 255, 255, 0.1);
+    --text-color:white;
+}
+
+body{
+    margin: 0px;
+    height: 100vh; width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Saira", sans-serif;
+}
+
+*{
+    box-sizing: border-box;
+    transition: all .7s;
+    color: var(--text-color);
+}
+
+a{
+    text-decoration: none;
+}
+
+.container{
+    height: 100%; width: 100%;
+    background-image: url(./assest/default.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+     overflow-x: hidden;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+.blurBg{
+    background: var(--bg-color);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+#controlPanel{
+    height: 60%;
+    width: 60px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    z-index: 10;
+    top: 20%;
+    left: -55px;
+    opacity: 0;
+
+
+    ul{
+        height: 100%; width: 100%;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding: 0px;
+        
+        
+        li{
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            cursor: pointer;
+            font-size:x-small;
+            border-radius: 10px;
+            i{
+                background: rgba(10, 13, 73, 0.2);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                padding: 10px;
+                border-radius: 10px;
+                font-size: large;
+                border: 1px solid rgba(255, 255, 255, 0.2);
+            }
+        }
+    }
+
+    &:hover{
+        opacity: 1;
+        left: 1px;
+    }
+}

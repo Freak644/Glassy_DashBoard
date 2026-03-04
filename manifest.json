@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "Glassy Aura Dashboard",
+  "version": "1.0.0",
+  "description": "Aura styled browser UI with custom dashboard tab.",
+  "chrome_url_overrides": {
+    "newtab": "newTab.html"
+  },
+  "permissions": ["storage"],
+  "theme": {
+    "colors": {
+      "frame": [88, 86, 214],
+      "frame_inactive": [70, 68, 180],
+      "toolbar": [98, 96, 230],
+      "tab_background_text": [255, 255, 255],
+      "tab_text": [255, 255, 255],
+      "bookmark_text": [255, 255, 255],
+      "ntp_background": [18, 18, 32],
+      "ntp_text": [255, 255, 255],
+      "button_background": [120, 118, 255]
+    }
+  },
+  "icons": {
+    "128": "assets/icon.png"
+  }
+}
