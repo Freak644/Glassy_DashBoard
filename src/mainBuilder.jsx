@@ -5,7 +5,7 @@ import './assets/style/baseStyle.css'
 import MyApp from './components/myApp'
 import {ToastContainer} from 'react-toastify';
 
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById('rootContainer')).render(
   <StrictMode>
       <MyApp/>
       <ToastContainer/>
