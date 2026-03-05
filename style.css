@@ -289,7 +289,7 @@ img{
 }
 
 .weather {
-    height: 250px; width: 400px;
+    height: 200px; width: 300px;
     position: absolute;
     top: 200px;
     right: 0px;    
@@ -301,5 +301,61 @@ img{
     height: 100%; width: 100%;
     position: relative;
     background: rgba(10, 13, 73, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
 
+    #dimg{
+        position: absolute;
+        height: 60px; width: 60px;
+        border-radius: 50%;
+        left: 0px;
+        top: 0px;
+    }
+
+    #ctemp{
+        font-size: 46px;
+        display: flex;
+        position: absolute;
+        top: 10px;
+        font-weight: bold;
+        left: 70px;
+        justify-content: start;
+        span{
+            font-size: medium !important;
+        }
+    }
+
+    #location {
+        font-size: larger;
+        font-weight: bold;
+        border: none;
+        position: absolute;
+        top: 5px;
+        left: 60%;
+    }
+    #stuts {
+        font-size: small;
+        font-weight: bold;
+        position: absolute;
+        top: 50px; left: 65%;
+    }
+    #curson {
+        height: 60px; width: 60px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        position: absolute;
+        bottom: 30px;
+        left: 20px;
+    }
+    #windtxt {
+        position: absolute;
+        top: 70px; left: 20px;
+    }
+    #speed {
+        position: absolute;
+        bottom: 30px; left: 50%;
+    }
 }
