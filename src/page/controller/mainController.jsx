@@ -1,7 +1,7 @@
 export default function Controller({settings}) {
     
     return(
-        <div id="controlPanel" className="blurBg">
+        <div id="controlPanel" className="blurBg z-20">
             <ul>
                 <li><i className='bx bxs-bookmark-heart' ></i>BM</li>
                 <li><i className="bx bx-image"></i>BG</li>
