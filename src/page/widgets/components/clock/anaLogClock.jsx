@@ -1,7 +1,8 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function AnalogClock() {
     let isCalled = false;
+    const [dateObj,setDate] = useState({}); 
     const secondRef = useRef(null);
     const minuteRef = useRef(null);
     const hourRef = useRef(null);
@@ -19,6 +20,14 @@ useEffect(() => {
         secondRef.current.style.transform = `rotate(${seconds}deg)`;
         minuteRef.current.style.transform = `rotate(${minute}deg)`;
         hourRef.current.style.transform = `rotate(${hours}deg)`;
+        if (!isCalled) {
+            let dateStr = new Date();
+            let today = dateStr.toLocaleString('default', {day: "2-digit"})
+            let monthName = dateStr.toLocaleString('default', {month: 'short'})
+            let year = dateStr.getFullYear();
+            setDate({today,monthName,year})
+            isCalled = true
+        }
     };
 
     let timeInterval = setInterval(handleTime, 50);
@@ -28,16 +37,23 @@ useEffect(() => {
 }, []);
 
     return(
-        <div  id="clock-body" class="blurBg" >
-                    <span id="thre" class="cont">3</span>
-                    <span id="six" class="cont">6</span>
-                    <span id="nin" class="cont">9</span>
-                    <span id="twe" class="cont">12</span>
-                   
-                    <div id="midleC"></div>
-                    <div ref={secondRef} id="sec" class="ned"><h3></h3></div>
-                    <div ref={minuteRef} id="min" class="ned"><h3></h3></div>
-                    <div ref={hourRef} id="ho" class="ned"> <h3></h3></div>
-        </div>
+        <>
+            <div id="dateCol">
+                <span className="date">{dateObj?.today}</span>
+                <span className="month">{dateObj?.monthName}</span>
+                <span className="year">{dateObj?.year}</span>
+            </div>
+            <div  id="clock-body" className="blurBg" >
+                <span id="thre" className="cont">3</span>
+                <span id="six" className="cont">6</span>
+                <span id="nin" className="cont">9</span>
+                <span id="twe" className="cont">12</span>
+                
+                <div id="midleC"></div>
+                <div ref={secondRef} id="sec" className="ned"><h3></h3></div>
+                <div ref={minuteRef} id="min" className="ned"><h3></h3></div>
+                <div ref={hourRef} id="ho" className="ned"> <h3></h3></div>
+            </div>
+        </>
     )
 }
