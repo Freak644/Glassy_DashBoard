@@ -4,8 +4,8 @@ import DigitalClock from "./digitalClock";
 export default function ClockMgmt({Obj}) {
   return(
     <div className="blurBg relative h-78 w-80 flex items-center justify-center text-white">
-      {1==1 && <DigitalClock/>}
-      {1!=1 && <AnalogClock/>}
+      {1!=1 && <DigitalClock/>}
+      {1==1 && <AnalogClock/>}
     </div>
   )
 }

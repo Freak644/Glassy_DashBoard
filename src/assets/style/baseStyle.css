@@ -196,7 +196,7 @@ a{
 
 #clock-body{
     position: absolute;
-    height: 150px; width: 150px;
+    height: 200px; width: 200px;
     border-radius: 50%;
     left: 80px;
     top: 10px;
@@ -222,8 +222,8 @@ a{
 h3{
     position: absolute;
     margin: 0;
-    left: 76px;
-    top: 75px;
+    left: 49%;
+    top: 49%;
     border: 1px solid white;
 }
 
@@ -232,7 +232,7 @@ h3{
     float: left;
     position: absolute;
     margin: 0;
-    height: 150px; width: 150px;
+    height: 200px; width: 200px;
     border-radius: 50%;
     rotate: -90deg;
     transition: all 0s !important;
@@ -245,22 +245,23 @@ h3{
         background-color: white;
         position: absolute;
         z-index: 3;
-        top: 70px; left: 72px;
+        top: 49%; left: 49%;
     }
 
 #sec{
-    h3{ height: 2px;
-        width: 70px;
+    h3{ height: 3px;
+        width: 80px;
         border-color: red;
     }
-  z-index: 4;
+    z-index: 4;
 }
+
 
 #min{
     h3{
-        height: 2px;
-        background: #fff;
-        width: 60px;
+        height: 3px;
+        border-color: white;
+        width: 70px;
     }
     z-index: 3;
 }
@@ -269,28 +270,27 @@ h3{
     h3{
         height: 2px;
         background: #fff;
-        width: 40px;
+        width: 50px;
     }
     z-index: 3;
 }
 
 
-
 #twe{
   top: 5px;
-  left: 66px;
+  left: 43%;
 }
 #thre{
-  top: 65px;
-  left: 135px;
+  top: 44%;
+  right: 10px;
 }
 #six{
-  top: 130px;
-  left: 68px;
+    bottom: 5px;
+  left: 47%;
 }
 #nin{
-  top: 65px;
-  left: 5px;
+  top: 44%;
+  left: 10px;
 }
 
 #dateCol {
