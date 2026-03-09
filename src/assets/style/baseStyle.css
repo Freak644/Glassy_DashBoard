@@ -506,3 +506,7 @@ img{
   width: calc(var(--clock-size)/ 2.75);
   transform: translatey(-50%);
 }
+
+.btn{
+    
+}

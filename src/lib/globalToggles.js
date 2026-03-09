@@ -13,6 +13,5 @@ export const toggler = create((set)=> ({
                 ...state,
                 [key]: value
             }
-            return true;
         })
 }))
