@@ -8,6 +8,18 @@ import {ToastContainer} from 'react-toastify';
 createRoot(document.getElementById('rootContainer')).render(
   <StrictMode>
       <MyApp/>
-      <ToastContainer/>
+      <ToastContainer
+            position='top-right'
+            autoClose={3000}
+            hideProgressBar={false}
+            newestOnTop
+            closeOnClick
+            rtl={false}
+           // pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme='dark'
+            toastClassName="custom-toast"
+        />
   </StrictMode>,
 )

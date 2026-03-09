@@ -9,7 +9,6 @@ export default function HandleVidoe() {
         file:null
     });
 
-    const videoElRef = useRef(null);
 
     const onDrop = (acceptedFiles) => {
         let file = acceptedFiles[0]
@@ -29,7 +28,10 @@ export default function HandleVidoe() {
     const {getRootProps,getInputProps,isDragActive} = useDropzone({
         onDrop,
         multiple:false,
-        maxSize: 100 * 1024 * 1024
+        maxSize: 100 * 1024 * 1024,
+        accept:{
+            "video/*":[]
+        }
     })
 
     useEffect(()=>{
@@ -76,10 +78,10 @@ export default function HandleVidoe() {
                 <video className="h-full w-full rounded-lg object-cover z-1!" autoPlay muted loop>
                     <source type="video/mp4" src={vidoe?.objUrl} />
                 </video>
-                <div className="miniController z-2! h-5 w-8 rounded-lg btn
-                absolute bottom-0 right-0">
-
-                </div>
+                <button className="miniController z-2! h-10 w-25 rounded-lg bg-size-[200%_200%] hover:bg-position-[100%_150%]  transition-all duration-700 ease-in-out
+                absolute bottom-0 right-0 overflow-hidden bg-linear-to-l cursor-pointer from-blue-500 via-pink-500 to-purple-600 btn">
+                    <div className="text-lg h-full w-full font-bold"><span>Upload</span> <i className="bx bx-upload"></i> </div>
+                </button>
             </div>}
         </div>
     )
