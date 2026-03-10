@@ -10,7 +10,7 @@ export default function NewTab() {
     },[data])
     return(
         <div className="underTaker">
-            <BackGround />
+            <BackGround/>
             <Controller />
             <Widgets />
         </div>

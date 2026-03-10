@@ -4,8 +4,9 @@ import {toast} from 'react-toastify';
 import {useDropzone} from 'react-dropzone';
 import {Upload} from 'lucide-react';
 import { toggler } from "../lib/globalToggles";
-export default function HandleVidoe() {
-    const [vidoe,setVideo] = useState({
+import { database } from "../lib/globalState";
+export default function Handlevideo() {
+    const [video,setVideo] = useState({
         objUrl:"",
         file:null,
         isBlur:false
@@ -16,31 +17,60 @@ export default function HandleVidoe() {
 
     let {toggleTab} = toggler();
 
+    let {setDB} = database();
 
-    const onDrop = (acceptedFiles) => {
+    const checkVideoDuration = (file) => {
+        return new Promise((resolve, reject) => {
+
+            const video = document.createElement("video");
+            video.preload = "metadata";
+
+            video.onloadedmetadata = () => {
+                URL.revokeObjectURL(video.src);
+
+                if (video.duration > 30) {
+                    reject("video is too long, 30second is the limit");
+                } else {
+                    resolve(true);
+                }
+            };
+
+            video.src = URL.createObjectURL(file);
+        });
+    };
+
+
+    const onDrop = async (acceptedFiles) => {
         let file = acceptedFiles[0]
         if (!file) return toast.info("No! video selcted");
-        const maxSize = 100 * 1024 * 1024;
+        const maxSize = 150 * 1024 * 1024;
         if (file.size > maxSize) {
-            return toast.info("File size will be < 100MB");
+            return toast.info("File size will be <= 150MB");
+        }
+
+        try {
+            await checkVideoDuration(file);
+        } catch(err) {
+            return toast.error(err);
         }
    
         setVideo({
             objUrl: URL.createObjectURL(file),
             file:file
         })
-       // videoElRef.current.value = ""
+     
     }
 
     const {getRootProps,getInputProps,isDragActive} = useDropzone({
         onDrop,
         multiple:false,
-        maxSize: 100 * 1024 * 1024,
+        maxSize: 150 * 1024 * 1024,
         accept:{
             "video/*":[]
         }
     })
 
+    
     useEffect(() => {
         if (!containerRef) return;
         const tab = containerRef.current;
@@ -49,21 +79,83 @@ export default function HandleVidoe() {
             if (tab && !tab.contains(event.target) && traget != "null") {
                 if (videoRef.current && !event.target.closest(".mainContainer")) {
                     toggleTab({ toggleVideo: false });
+                    URL.revokeObjectURL(video.objUrl);
+                    setVideo({
+                        objUrl:"",
+                        file:null,
+                        isBlur:false
+                    })
                 }
             }
         };
-
+        
         document.addEventListener("click", handleClick);
-
+        
         return () => {
             document.removeEventListener("click", handleClick);
         };
     }, []);
+
+    const saveTheVideo = () => {
+
+        if (!video.file) {
+            return toast.info("Not Found! please try again");
+        }
+
+        const request = indexedDB.open("videoDB", 2);
+
+        request.onupgradeneeded = (event) => {
+            const db = event.target.result;
+
+            if (!db.objectStoreNames.contains("videos")) {
+                db.createObjectStore("videos");
+            }
+        };
+
+        request.onerror = () => {
+            console.error("IndexedDB error");
+        };
+
+        request.onsuccess = (event) => {
+            const db = event.target.result;
+
+            const tx = db.transaction("videos", "readwrite");
+            const store = tx.objectStore("videos");
+
+            store.put(video.file, "backgroundVideo");
+
+            tx.oncomplete = () => {
+                toast.success("✅ Video Saved!");
+                db.close();
+            };
+
+            tx.onerror = () => {
+                toast.warning("Transaction failed");
+            };
+        };
+        let data = {
+            "background":{
+                "type":"video",
+                "isBlur":video.isBlur === true
+            }
+        }
+         let key = Object.keys(data)
+        console.log(key)
+        setDB({data,isGet:false})
+
+        URL.revokeObjectURL(video.objUrl);
+        setVideo({
+            objUrl:"",
+            file:null,
+            isBlur:false
+        })
+    };
+
     return(
         <div ref={containerRef} className="h-6/10 w-5/10 flex items-center justify-center absolute left-1/4
         bg-black/20 backdrop-blur-2xl rounded-lg top-1/5 mainContainer
         ">
-            {vidoe.file === null ? <div className="notVidoe h-8/10 w-8/10 blurBg flex relative items-start justify-center p-2">
+            {video.file === null ? <div className="notvideo h-8/10 w-8/10 blurBg flex relative items-start justify-center p-2">
                 <motion.div
                     {...getRootProps()}
                     initial={{ scale: 0.95, opacity: 0 }}
@@ -97,9 +189,9 @@ export default function HandleVidoe() {
             
             <div ref={videoRef} className="afterSelected h-8/10 w-9/10 p-2 relative">
                 <video className="h-full w-full rounded-lg object-cover z-1! relative" autoPlay muted loop>
-                    <source type="video/mp4" src={vidoe?.objUrl} />
+                    <source type="video/mp4" src={video?.objUrl} />
                 </video>
-                {vidoe.isBlur && <div className="blurBg z-2! h-full w-full absolute top-0 left-0"></div>}
+                {video.isBlur && <div className="blurBg z-2! h-full w-full absolute top-0 left-0"></div>}
                 <button onClick={()=>setVideo(prev=>({
                     ...prev,
                     isBlur: !prev.isBlur
@@ -110,13 +202,13 @@ export default function HandleVidoe() {
                     </div>
                 </button>
 
-                <button className="miniController z-2! h-10 w-25 rounded-lg bg-size-[200%_200%] hover:bg-position-[100%_150%]  transition-all duration-700 ease-in-out
+                <button onClick={saveTheVideo} className="miniController z-2! h-10 w-25 rounded-lg bg-size-[200%_200%] hover:bg-position-[100%_150%]  transition-all duration-700 ease-in-out
                 absolute bottom-0 right-0 overflow-hidden bg-linear-to-r cursor-pointer from-blue-500 via-pink-500 to-green-600 btn">
                     <div className="text-lg h-full w-full font-bold"><span>Upload</span> <i className="bx bx-upload"></i> </div>
                 </button>
 
                 <button onClick={()=>{
-                    URL.revokeObjectURL(vidoe.objUrl);
+                    URL.revokeObjectURL(video.objUrl);
                     setVideo({
                         objUrl:"",
                         file:null,
