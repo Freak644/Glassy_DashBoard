@@ -3,11 +3,18 @@ import {motion, scale} from 'framer-motion';
 import {toast} from 'react-toastify';
 import {useDropzone} from 'react-dropzone';
 import {Upload} from 'lucide-react';
+import { toggler } from "../lib/globalToggles";
 export default function HandleVidoe() {
     const [vidoe,setVideo] = useState({
         objUrl:"",
-        file:null
+        file:null,
+        isBlur:false
     });
+
+    const containerRef = useRef(null);
+    const videoRef = useRef(null);
+
+    let {toggleTab} = toggler();
 
 
     const onDrop = (acceptedFiles) => {
@@ -17,7 +24,7 @@ export default function HandleVidoe() {
         if (file.size > maxSize) {
             return toast.info("File size will be < 100MB");
         }
-        console.log("here")
+   
         setVideo({
             objUrl: URL.createObjectURL(file),
             file:file
@@ -34,13 +41,27 @@ export default function HandleVidoe() {
         }
     })
 
-    useEffect(()=>{
-        console.log(vidoe)
-    },[vidoe])
+    useEffect(() => {
+        if (!containerRef) return;
+        const tab = containerRef.current;
+        const handleClick = (event) => {
+            let traget = event.target.id;
+            if (tab && !tab.contains(event.target) && traget != "null") {
+                if (videoRef.current && !event.target.closest(".mainContainer")) {
+                    toggleTab({ toggleVideo: false });
+                }
+            }
+        };
 
+        document.addEventListener("click", handleClick);
+
+        return () => {
+            document.removeEventListener("click", handleClick);
+        };
+    }, []);
     return(
-        <div className="h-6/10 w-5/10 flex items-center justify-center absolute left-1/4
-        bg-black/20 backdrop-blur-2xl rounded-lg top-1/5
+        <div ref={containerRef} className="h-6/10 w-5/10 flex items-center justify-center absolute left-1/4
+        bg-black/20 backdrop-blur-2xl rounded-lg top-1/5 mainContainer
         ">
             {vidoe.file === null ? <div className="notVidoe h-8/10 w-8/10 blurBg flex relative items-start justify-center p-2">
                 <motion.div
@@ -74,15 +95,39 @@ export default function HandleVidoe() {
                 
             </div> : 
             
-            <div className="afterSelected h-8/10 w-9/10 p-2 relative">
-                <video className="h-full w-full rounded-lg object-cover z-1!" autoPlay muted loop>
+            <div ref={videoRef} className="afterSelected h-8/10 w-9/10 p-2 relative">
+                <video className="h-full w-full rounded-lg object-cover z-1! relative" autoPlay muted loop>
                     <source type="video/mp4" src={vidoe?.objUrl} />
                 </video>
+                {vidoe.isBlur && <div className="blurBg z-2! h-full w-full absolute top-0 left-0"></div>}
+                <button onClick={()=>setVideo(prev=>({
+                    ...prev,
+                    isBlur: !prev.isBlur
+                }))} className="miniController z-2! h-10 w-25 rounded-lg bg-size-[200%_200%] hover:bg-position-[100%_150%]  transition-all duration-700 ease-in-out
+                absolute bottom-0 right-30 overflow-hidden bg-linear-to-l cursor-pointer from-blue-600/50 via-pink-600/50 to-sky-600/50 btn backdrop-blur-2xl">
+                    <div className="text-lg h-full w-full font-semibold">
+                        <span>Blur</span> <i>BG</i>
+                    </div>
+                </button>
+
                 <button className="miniController z-2! h-10 w-25 rounded-lg bg-size-[200%_200%] hover:bg-position-[100%_150%]  transition-all duration-700 ease-in-out
-                absolute bottom-0 right-0 overflow-hidden bg-linear-to-l cursor-pointer from-blue-500 via-pink-500 to-purple-600 btn">
+                absolute bottom-0 right-0 overflow-hidden bg-linear-to-r cursor-pointer from-blue-500 via-pink-500 to-green-600 btn">
                     <div className="text-lg h-full w-full font-bold"><span>Upload</span> <i className="bx bx-upload"></i> </div>
                 </button>
+
+                <button onClick={()=>{
+                    URL.revokeObjectURL(vidoe.objUrl);
+                    setVideo({
+                        objUrl:"",
+                        file:null,
+                        isBlur:false
+                    })
+                }} className="miniController z-2! h-10 w-20 rounded-lg 
+                absolute bottom-0 left-0 overflow-hidden bg-red-400 font-semibold hover:bg-red-500 cursor-pointer ">
+                    Clear
+                </button>
             </div>}
+            <i onClick={()=>toggleTab({ toggleVideo: false })} className="bx bx-x font-bold text-2xl absolute top-2.5 right-2.5 text-rose-500! cursor-pointer"></i>
         </div>
     )
 }
