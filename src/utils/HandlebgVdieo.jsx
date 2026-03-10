@@ -13,8 +13,6 @@ export default function Handlevideo() {
     });
 
     const containerRef = useRef(null);
-    const videoRef = useRef(null);
-
     let {toggleTab} = toggler();
 
     let {setDB} = database();
@@ -74,10 +72,10 @@ export default function Handlevideo() {
     useEffect(() => {
         if (!containerRef) return;
         const tab = containerRef.current;
+
         const handleClick = (event) => {
             let traget = event.target.id;
-            if (tab && !tab.contains(event.target) && traget != "null") {
-                if (videoRef.current && !event.target.closest(".mainContainer")) {
+            if (tab && !tab.contains(event.target) && traget != "null" && traget !== "btn") {
                     toggleTab({ toggleVideo: false });
                     URL.revokeObjectURL(video.objUrl);
                     setVideo({
@@ -85,7 +83,6 @@ export default function Handlevideo() {
                         file:null,
                         isBlur:false
                     })
-                }
             }
         };
         
@@ -153,7 +150,7 @@ export default function Handlevideo() {
 
     return(
         <div ref={containerRef} className="h-6/10 w-5/10 flex items-center justify-center absolute left-1/4
-        bg-black/20 backdrop-blur-2xl rounded-lg top-1/5 mainContainer
+        bg-black/20 backdrop-blur-2xl rounded-lg top-1/5
         ">
             {video.file === null ? <div className="notvideo h-8/10 w-8/10 blurBg flex relative items-start justify-center p-2">
                 <motion.div
@@ -187,12 +184,12 @@ export default function Handlevideo() {
                 
             </div> : 
             
-            <div ref={videoRef} className="afterSelected h-8/10 w-9/10 p-2 relative">
+            <div  className="afterSelected h-8/10 w-9/10 p-2 relative">
                 <video className="h-full w-full rounded-lg object-cover z-1! relative" autoPlay muted loop>
                     <source type="video/mp4" src={video?.objUrl} />
                 </video>
                 {video.isBlur && <div className="blurBg z-2! h-full w-full absolute top-0 left-0"></div>}
-                <button onClick={()=>setVideo(prev=>({
+                <button id="btn" onClick={()=>setVideo(prev=>({
                     ...prev,
                     isBlur: !prev.isBlur
                 }))} className="miniController z-2! h-10 w-25 rounded-lg bg-size-[200%_200%] hover:bg-position-[100%_150%]  transition-all duration-700 ease-in-out
@@ -202,12 +199,12 @@ export default function Handlevideo() {
                     </div>
                 </button>
 
-                <button onClick={saveTheVideo} className="miniController z-2! h-10 w-25 rounded-lg bg-size-[200%_200%] hover:bg-position-[100%_150%]  transition-all duration-700 ease-in-out
+                <button id="btn" onClick={saveTheVideo} className="miniController z-2! h-10 w-25 rounded-lg bg-size-[200%_200%] hover:bg-position-[100%_150%]  transition-all duration-700 ease-in-out
                 absolute bottom-0 right-0 overflow-hidden bg-linear-to-r cursor-pointer from-blue-500 via-pink-500 to-green-600 btn">
                     <div className="text-lg h-full w-full font-bold"><span>Upload</span> <i className="bx bx-upload"></i> </div>
                 </button>
 
-                <button onClick={()=>{
+                <button id="btn" onClick={()=>{
                     URL.revokeObjectURL(video.objUrl);
                     setVideo({
                         objUrl:"",

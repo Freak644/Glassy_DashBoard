@@ -10,8 +10,7 @@ export const database = create((set, get) => ({
 
     if (!data || Object.keys(data).length === 0) return;
     const newDb = {...current };
-    console.log(data)
-    console.log(data.background)
+
     Object.keys(data).forEach(key=>{
         const value = data[key];
         console.log(value)
