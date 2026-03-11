@@ -1,6 +1,7 @@
 import { useState } from "react";
 import NewTab from "../page/newTab";
 import { database } from "../lib/globalState";
+import '../assets/style/pasesTwo.css'
 
 export default function MyApp() {
     let {setDB} = database();

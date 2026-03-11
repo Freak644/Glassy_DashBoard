@@ -1,5 +1,5 @@
 import { toggler } from "../../lib/globalToggles";
-import HandleVidoe from "../../utils/bgHandler/HandlebgVdieo";
+import BackGroundMW from "../../utils/bgHandler/bgMiddleWhare";
 import ClockMgmt from "./components/clock/clockmgmt";
 
 export default function Widgets({data}) {
@@ -7,7 +7,7 @@ export default function Widgets({data}) {
     return(
         <div className="thonePrincess z-10 bg-transparent">
             <ClockMgmt />
-            {isHanler && <HandleVidoe/>}
+            {isHanler && <BackGroundMW/>}
         </div>
     )
 }
