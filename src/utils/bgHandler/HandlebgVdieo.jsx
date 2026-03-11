@@ -3,8 +3,8 @@ import {motion, scale} from 'framer-motion';
 import {toast} from 'react-toastify';
 import {useDropzone} from 'react-dropzone';
 import {Upload} from 'lucide-react';
-import { toggler } from "../lib/globalToggles";
-import { database } from "../lib/globalState";
+import { toggler } from "../../lib/globalToggles";
+import { database } from "../../lib/globalState";
 export default function Handlevideo() {
     const [video,setVideo] = useState({
         objUrl:"",
@@ -40,7 +40,7 @@ export default function Handlevideo() {
 
     const onDrop = async (acceptedFiles) => {
         let file = acceptedFiles[0]
-        if (!file) return toast.info("No! video selcted");
+        if (!file) return toast.info("File! Not Found");
         const maxSize = 150 * 1024 * 1024;
         if (file.size > maxSize) {
             return toast.info("File size will be <= 150MB");
@@ -52,10 +52,11 @@ export default function Handlevideo() {
             return toast.error(err);
         }
    
-        setVideo({
-            objUrl: URL.createObjectURL(file),
-            file:file
-        })
+        setVideo(prev=>({
+            ...prev,
+            objUrl:URL.createObjectURL(file),
+            file
+        }));
      
     }
 
@@ -99,13 +100,13 @@ export default function Handlevideo() {
             return toast.info("Not Found! please try again");
         }
 
-        const request = indexedDB.open("videoDB", 2);
+        const request = indexedDB.open("chomeDB", 2);
 
         request.onupgradeneeded = (event) => {
             const db = event.target.result;
 
-            if (!db.objectStoreNames.contains("videos")) {
-                db.createObjectStore("videos");
+            if (!db.objectStoreNames.contains("myDB")) {
+                db.createObjectStore("myDB");
             }
         };
 
@@ -116,10 +117,10 @@ export default function Handlevideo() {
         request.onsuccess = (event) => {
             const db = event.target.result;
 
-            const tx = db.transaction("videos", "readwrite");
-            const store = tx.objectStore("videos");
+            const tx = db.transaction("myDB", "readwrite");
+            const store = tx.objectStore("myDB");
 
-            store.put(video.file, "backgroundVideo");
+            store.put(video.file, "backgroundStuff");
 
             tx.oncomplete = () => {
                 toast.success("✅ Video Saved!");
@@ -133,11 +134,10 @@ export default function Handlevideo() {
         let data = {
             "background":{
                 "type":"video",
-                "isBlur":video.isBlur === true
+                "isBlur":video.isBlur
             }
         }
-         let key = Object.keys(data)
-        console.log(key)
+
         setDB({data,isGet:false})
 
         URL.revokeObjectURL(video.objUrl);
@@ -146,6 +146,7 @@ export default function Handlevideo() {
             file:null,
             isBlur:false
         })
+        toggleTab({ toggleVideo: false });
     };
 
     return(

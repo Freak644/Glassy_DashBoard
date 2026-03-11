@@ -1,5 +1,5 @@
 import { toggler } from "../../lib/globalToggles";
-import HandleVidoe from "../../utils/HandlebgVdieo";
+import HandleVidoe from "../../utils/bgHandler/HandlebgVdieo";
 import ClockMgmt from "./components/clock/clockmgmt";
 
 export default function Widgets({data}) {

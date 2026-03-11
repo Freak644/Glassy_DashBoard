@@ -1,7 +1,12 @@
 import { create } from "zustand";
 
 export const database = create((set, get) => ({
-  db: {},
+  db: {
+    "background":{
+      "type":"image",
+      "isBlur":false
+    }
+  },
   
 
   setDB: (obj = {}) => {
