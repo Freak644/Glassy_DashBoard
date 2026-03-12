@@ -83,7 +83,7 @@ export default function HandleBGUpload() {
             let traget = event.target.id;
             if (tab && !tab.contains(event.target) && traget != "null" && traget !== "btn") {
                     toggleTab({ toggleVideo: false });
-                    URL.revokeObjectURL(video.objUrl);
+                    URL.revokeObjectURL(background.objUrl);
                     setBackground({
                         objUrl:"",
                         file:null,
@@ -138,7 +138,7 @@ export default function HandleBGUpload() {
         };
         let data = {
             "background":{
-                "type":"video",
+                "type":background.bgType,
                 "isBlur":background.isBlur
             }
         }
