@@ -100,7 +100,7 @@ export default function Handlevideo() {
             return toast.info("Not Found! please try again");
         }
 
-        const request = indexedDB.open("chomeDB", 2);
+        const request = indexedDB.open("chromeDB", 3221);
 
         request.onupgradeneeded = (event) => {
             const db = event.target.result;

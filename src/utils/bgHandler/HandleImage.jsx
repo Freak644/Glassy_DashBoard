@@ -3,6 +3,8 @@ import { toggler } from "../../lib/globalToggles";
 import { database } from "../../lib/globalState";
 import { toast } from "react-toastify";
 import {useDropzone} from 'react-dropzone'
+import {motion} from 'framer-motion';
+import {Upload} from 'lucide-react';
 
 export default function HandleImage() {
     const [Image, setImage] = useState({
@@ -63,22 +65,23 @@ export default function HandleImage() {
     const saveTheImage = () => {
         if (!Image.file) return toast.info("Not Found! please try again");
 
-        const request = indexedDB.open("chomeDB", 2);
+       const request = indexedDB.open("chromeDB", 3221);
 
-        request.onupgradeneeded = (evnt) => {
-            const db = evnt.target.result;
+        request.onupgradeneeded = (event) => {
+            const db = event.target.result;
 
             if (!db.objectStoreNames.contains("myDB")) {
                 db.createObjectStore("myDB");
             }
         };
 
-        request.onerror = () => {
+        request.onerror = (event) => {
+            console.error(event.target.error);
             toast.warning("IndexedDB error");
         };
 
-        request.onsuccess = (evnt) => {
-            const db = evnt.target.result;
+        request.onsuccess = (event) => {
+            const db = event.target.result;
 
             const tx = db.transaction("myDB", "readwrite");
             const store = tx.objectStore("myDB");
@@ -90,7 +93,8 @@ export default function HandleImage() {
                 db.close();
             };
 
-            tx.onerror = () => {
+            tx.onerror = (e) => {
+                console.error(e.target.error);
                 toast.warning("Transaction failed");
             };
         };
@@ -143,7 +147,7 @@ export default function HandleImage() {
                             ? "Drop files here"
                             : "Drag & drop or click to browse"}
                         </p>
-                        <p className="text-sm text-gray-500">Max 100MB</p>
+                        <p className="text-sm text-gray-500">___________________</p>
                     </motion.div>
                 </motion.div>
                 

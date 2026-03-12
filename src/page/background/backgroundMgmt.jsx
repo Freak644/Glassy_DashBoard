@@ -8,15 +8,15 @@ export default function BackGround() {
     const data = database(stat=>stat.db?.background)
     const [blogUrl,setVideo] = useState("");
     useEffect(() => {
-        const request = indexedDB.open("videoDB", 2);
+        const request = indexedDB.open("chromeDB", 3221);
         let url;
 
         request.onsuccess = evnt => {
             const db = evnt.target.result;
-            const tx = db.transaction("videos", "readonly");
-            const store = tx.objectStore("videos");
+            const tx = db.transaction("myDB", "readonly");
+            const store = tx.objectStore("myDB");
 
-            const getRequest = store.get("backgroundVideo");
+            const getRequest = store.get("backgroundStuff");
 
             getRequest.onsuccess = () => {
             const blogVideo = getRequest.result;
@@ -24,17 +24,18 @@ export default function BackGround() {
 
             url = URL.createObjectURL(blogVideo);
             setVideo(url);
+            console.log(url)
             };
         };
 
         return () => {
-            if (url) URL.revokeObjectURL(url);
+            if (blogUrl) URL.revokeObjectURL(blogUrl);
         };
     }, [data]);
     return(
         <div className="thonePrincess">
             {data?.type == "video" ? <VideoBg isBlur={data.isBlur} blogUrl={blogUrl}/> :
-            <ImageBg />}
+            <ImageBg isBlur={data?.isBlur} blogURL={blogUrl} />}
         </div>
     )
 }
