@@ -1,16 +1,16 @@
-import { useEffect, useRef, useState } from "react";
-import { toggler } from "../../lib/globalToggles";
-import { database } from "../../lib/globalState";
-import { toast } from "react-toastify";
-import {useDropzone} from 'react-dropzone'
-import {motion} from 'framer-motion';
+import { useEffect, useRef, useState } from "react"
+import {motion, scale} from 'framer-motion';
+import {toast} from 'react-toastify';
+import {useDropzone} from 'react-dropzone';
 import {Upload} from 'lucide-react';
-
-export default function HandleImage() {
-    const [Image, setImage] = useState({
+import { toggler } from "../lib/globalToggles";
+import { database } from "../lib/globalState";
+export default function HandleBGUpload() {
+    const [background,setBackground] = useState({
         objUrl:"",
         file:null,
-        isBlur:false
+        isBlur:false,
+        bgType:""
     });
 
     const containerRef = useRef(null);
@@ -18,54 +18,94 @@ export default function HandleImage() {
 
     let {setDB} = database();
 
-    const onDrop = acceptFiles => {
-        let file = acceptFiles[0];
+    const checkVideoDuration = (file) => {
+        return new Promise((resolve, reject) => {
+
+            const video = document.createElement("video");
+            video.preload = "metadata";
+
+            video.onloadedmetadata = () => {
+                URL.revokeObjectURL(video.src);
+
+                if (video.duration > 30) {
+                    reject("video is too long, 30second is the limit");
+                } else {
+                    resolve(true);
+                }
+            };
+
+            video.src = URL.createObjectURL(file);
+        });
+    };
+
+
+    const onDrop = async (acceptedFiles) => {
+        let file = acceptedFiles[0]
         if (!file) return toast.info("File! Not Found");
-        
-        setImage(prev=>({
+        let crntFileType = file.type.split("/")[0];
+        console.log(crntFileType)
+
+        if (crntFileType === "video") {
+             try {
+                   await checkVideoDuration(file);
+               } catch(err) {
+                   return toast.error(err);
+               }
+        }
+
+  
+   
+        setBackground(prev=>({
             ...prev,
             objUrl:URL.createObjectURL(file),
-            file
-        }))
+            file,
+            bgType:crntFileType
+        }));
+     
     }
 
-    const {getRootProps, getInputProps, isDragActive} = useDropzone({
+    const {getRootProps,getInputProps,isDragActive} = useDropzone({
         onDrop,
         multiple:false,
+        maxSize: 150 * 1024 * 1024,
         accept:{
+            "video/*":[],
             "image/*":[]
         }
     })
 
-    useEffect(()=>{
+    
+    useEffect(() => {
         if (!containerRef) return;
-        const mainContainer = containerRef.current;
+        const tab = containerRef.current;
 
-        const handleClick = evnt => {
-            let traget = evnt.target.id;
-
-            if (mainContainer && !mainContainer.contains(evnt.target) && traget != "null" && traget != "btn") {
-                toggleTab({toggleVideo: false});
-                URL.revokeObjectURL(Image.objUrl);
-                setImage({
-                    objUrl:"",
-                    file:null,
-                    isBlur:false
-                })
+        const handleClick = (event) => {
+            let traget = event.target.id;
+            if (tab && !tab.contains(event.target) && traget != "null" && traget !== "btn") {
+                    toggleTab({ toggleVideo: false });
+                    URL.revokeObjectURL(video.objUrl);
+                    setBackground({
+                        objUrl:"",
+                        file:null,
+                        isBlur:false
+                    })
             }
-        }
-
+        };
+        
         document.addEventListener("click", handleClick);
-
+        
         return () => {
             document.removeEventListener("click", handleClick);
-        }
+        };
     }, []);
-    
-    const saveTheImage = () => {
-        if (!Image.file) return toast.info("Not Found! please try again");
 
-       const request = indexedDB.open("chromeDB", 3221);
+    const saveTheVideo = () => {
+
+        if (!background.file) {
+            return toast.info("Not Found! please try again");
+        }
+
+        const request = indexedDB.open("chromeDB", 3221);
 
         request.onupgradeneeded = (event) => {
             const db = event.target.result;
@@ -75,9 +115,8 @@ export default function HandleImage() {
             }
         };
 
-        request.onerror = (event) => {
-            console.error(event.target.error);
-            toast.warning("IndexedDB error");
+        request.onerror = () => {
+            console.error("IndexedDB error");
         };
 
         request.onsuccess = (event) => {
@@ -86,42 +125,40 @@ export default function HandleImage() {
             const tx = db.transaction("myDB", "readwrite");
             const store = tx.objectStore("myDB");
 
-            store.put(Image.file, "backgroundStuff");
+            store.put(background.file, "backgroundStuff");
 
             tx.oncomplete = () => {
                 toast.success("✅ Video Saved!");
                 db.close();
             };
 
-            tx.onerror = (e) => {
-                console.error(e.target.error);
+            tx.onerror = () => {
                 toast.warning("Transaction failed");
             };
         };
         let data = {
             "background":{
-                "type":"image",
-                "isBlur":Image.isBlur
+                "type":"video",
+                "isBlur":background.isBlur
             }
         }
-        
-        setDB({data, isGet:false})
 
-        URL.revokeObjectURL(Image.objUrl);
-        setImage({
+        setDB({data,isGet:false})
+
+        URL.revokeObjectURL(background.objUrl);
+        setBackground({
             objUrl:"",
             file:null,
             isBlur:false
-        });
-
+        })
         toggleTab({ toggleVideo: false });
-    }
+    };
 
     return(
         <div ref={containerRef} className="h-6/10 w-5/10 flex items-center justify-center absolute left-1/4
         bg-black/20 backdrop-blur-2xl rounded-lg top-1/5
         ">
-            {Image.file === null ? <div className="notvideo h-8/10 w-8/10 blurBg flex relative items-start justify-center p-2">
+            {background.file === null ? <div className="notvideo h-8/10 w-8/10 blurBg flex relative items-start justify-center p-2">
                 <motion.div
                     {...getRootProps()}
                     initial={{ scale: 0.95, opacity: 0 }}
@@ -134,7 +171,7 @@ export default function HandleImage() {
                             : "border-gray-700 bg-[#000000a5] hover:border-cyan-400/40 hover:bg-black/80"
                         }`}
                     >
-                    <input {...getInputProps()} accept="image/*" />
+                    <input {...getInputProps()} accept="video/*,image/*" />
 
                     <motion.div
                         animate={{ y: isDragActive ? -6 : 0 }}
@@ -147,18 +184,18 @@ export default function HandleImage() {
                             ? "Drop files here"
                             : "Drag & drop or click to browse"}
                         </p>
-                        <p className="text-sm text-gray-500">___________________</p>
+                        <p className="text-sm text-gray-500">Max size Limit for Video 150MB</p>
                     </motion.div>
                 </motion.div>
                 
             </div> : 
             
             <div  className="afterSelected h-8/10 w-9/10 p-2 relative">
-                <div className="h-full w-full rounded-lg object-cover z-1! relative" autoPlay muted loop>
-                    <img src={Image?.objUrl} />
-                </div>
-                {Image.isBlur && <div className="blurBg z-2! h-full w-full absolute top-0 left-0"></div>}
-                <button id="btn" onClick={()=>setVideo(prev=>({
+                {background.bgType === "video" ? <video className="h-full w-full rounded-lg object-cover z-1! relative" autoPlay muted loop>
+                    <source type="video/mp4" src={background?.objUrl} />
+                </video> : <div className="h-full w-full rounded-lg object-cover z-1! relative"><img src={background?.objUrl} alt="" /></div>}
+                {background.isBlur && <div className="blurBg z-2! h-full w-full absolute top-0 left-0"></div>}
+                <button id="btn" onClick={()=>setBackground(prev=>({
                     ...prev,
                     isBlur: !prev.isBlur
                 }))} className="miniController z-2! h-10 w-25 rounded-lg bg-size-[200%_200%] hover:bg-position-[100%_150%]  transition-all duration-700 ease-in-out
@@ -168,14 +205,14 @@ export default function HandleImage() {
                     </div>
                 </button>
 
-                <button id="btn" onClick={saveTheImage} className="miniController z-2! h-10 w-25 rounded-lg bg-size-[200%_200%] hover:bg-position-[100%_150%]  transition-all duration-700 ease-in-out
+                <button id="btn" onClick={saveTheVideo} className="miniController z-2! h-10 w-25 rounded-lg bg-size-[200%_200%] hover:bg-position-[100%_150%]  transition-all duration-700 ease-in-out
                 absolute bottom-0 right-0 overflow-hidden bg-linear-to-r cursor-pointer from-blue-500 via-pink-500 to-green-600 btn">
                     <div className="text-lg h-full w-full font-bold"><span>Upload</span> <i className="bx bx-upload"></i> </div>
                 </button>
 
                 <button id="btn" onClick={()=>{
-                    URL.revokeObjectURL(Image.objUrl);
-                    setVideo({
+                    URL.revokeObjectURL(background.objUrl);
+                    setBackground({
                         objUrl:"",
                         file:null,
                         isBlur:false
