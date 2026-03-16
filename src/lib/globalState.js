@@ -5,6 +5,9 @@ export const database = create((set, get) => ({
     "background":{
       "type":"image",
       "isBlur":false
+    },
+    "name":{
+      "username":"User"
     }
   },
   

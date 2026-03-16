@@ -2,6 +2,7 @@ import { create } from "zustand";
 
 export const toggler = create((set)=> ({
     toggleVideo:false,
+    toggleEdit:false,
 
     toggleTab: (obj = {}) =>
         set((state) => {
