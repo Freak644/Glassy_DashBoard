@@ -45,4 +45,3 @@ Enjoy 🔥
  ## License
 
 
-Contact: loser4113@gmail.com for commercial use or collaboration inquiries.
