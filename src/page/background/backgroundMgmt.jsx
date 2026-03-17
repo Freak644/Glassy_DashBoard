@@ -8,6 +8,7 @@ export default function BackGround() {
     const data = database(stat=>stat.db?.background)
     const [blogUrl,setVideo] = useState("");
     useEffect(() => {
+        if (data.load != "custom") return;
         const request = indexedDB.open("chromeDB", 3221);
         let url;
 

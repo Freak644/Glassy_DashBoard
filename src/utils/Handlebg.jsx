@@ -138,6 +138,7 @@ export default function HandleBGUpload() {
         };
         let data = {
             "background":{
+                "load":"custom",
                 "type":background.bgType,
                 "isBlur":background.isBlur
             }

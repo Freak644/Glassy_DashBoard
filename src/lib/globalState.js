@@ -3,6 +3,7 @@ import { create } from "zustand";
 export const database = create((set, get) => ({
   db: {
     "background":{
+      load:"default",
       type:"image",
       isBlur:false
     },
