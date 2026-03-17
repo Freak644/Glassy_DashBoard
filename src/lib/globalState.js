@@ -3,12 +3,18 @@ import { create } from "zustand";
 export const database = create((set, get) => ({
   db: {
     "background":{
-      "type":"image",
-      "isBlur":false
+      type:"image",
+      isBlur:false
     },
     "name":{
-      "username":"User"
-    }
+      username:"User"
+    },
+    "searchWid":{
+      isTrue:true,
+      position:{
+        x:10, y:10
+      }
+    },
   },
   
 

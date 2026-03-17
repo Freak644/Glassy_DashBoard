@@ -143,9 +143,7 @@ a{
 .search{
     padding: 20px;
     height: 80px; width: 450px;
-    left: 10%;
     position: relative;
-    top: 5%;
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     overflow: hidden;
@@ -190,9 +188,8 @@ a{
 }
 
 #clock{
-    position: absolute;
+    position: relative;
     height: 170px; width: 250px;
-    top: 200px;
 
 }
 

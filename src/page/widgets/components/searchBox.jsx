@@ -1,7 +1,7 @@
 import { toggler } from "../../../lib/globalToggles"
 
 export default function SearchBar() {
-
+    
     return(  
          <div className="blurBg search">
             

@@ -1,0 +1,51 @@
+import { motion, useDragControls } from "framer-motion";
+
+export default function DraggableWidget({
+  id,
+  position,
+  setPositions,
+  toggleEdit,
+  children,
+  className = "",
+}) {
+  const controls = useDragControls();
+
+  const handleDragEnd = (e, info) => {
+    setPositions((prev) => ({
+      ...prev,
+      [id]: {
+        x: prev[id].x + info.offset.x,
+        y: prev[id].y + info.offset.y,
+      },
+    }));
+  };
+
+  return (
+    <motion.div
+      drag={toggleEdit}
+      dragControls={controls}
+      dragListener={false}
+      dragElastic={0}
+      dragMomentum={false}
+      onDragEnd={handleDragEnd}
+      className={`${className} absolute p-1`}
+      dragTransition={{ bounceStiffness: 1000, bounceDamping: 50 }}
+      style={{
+        x: position.x,
+        y: position.y,
+      }}
+    >
+      {toggleEdit && (
+        <div className="moverDiv">
+          <i
+            className="bx bxs-grid cursor-grab active:cursor-grabbing"
+            onPointerDown={(e) => controls.start(e)}
+          ></i>
+          <i className="bx bx-x"></i>
+        </div>
+      )}
+
+      {children}
+    </motion.div>
+  );
+}
