@@ -105,7 +105,7 @@ export default function HandleBGUpload() {
             return toast.info("Not Found! please try again");
         }
 
-        const request = indexedDB.open("chromeDB", 3221);
+        const request = indexedDB.open("chromeDB", 3222);
 
         request.onupgradeneeded = (event) => {
             const db = event.target.result;

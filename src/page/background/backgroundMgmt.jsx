@@ -2,14 +2,13 @@ import { useEffect, useState } from "react";
 import { database } from "../../lib/globalState";
 import ImageBg from "./BG/imageBg";
 import VideoBg from "./BG/videoBg";
-import { useScroll } from "framer-motion";
 
 export default function BackGround() {
     const data = database(stat=>stat.db?.background)
     const [blogUrl,setVideo] = useState("");
     useEffect(() => {
         if (data.load != "custom") return;
-        const request = indexedDB.open("chromeDB", 3221);
+        const request = indexedDB.open("chromeDB", 3222);
         let url;
 
         request.onsuccess = evnt => {
@@ -25,7 +24,7 @@ export default function BackGround() {
 
             url = URL.createObjectURL(blogVideo);
             setVideo(url);
-            console.log(url)
+            // console.log(url)
             };
         };
 

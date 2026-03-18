@@ -1,4 +1,3 @@
-
 import defaultVid from '../../../assets/defaultVid.mp4'
 export default function VideoBg({isBlur,blogUrl}) {
 
