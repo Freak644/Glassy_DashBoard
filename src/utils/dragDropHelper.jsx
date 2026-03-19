@@ -14,8 +14,11 @@ export default function DraggableWidget({
     setPositions((prev) => ({
       ...prev,
       [id]: {
-        x: prev[id].x + info.offset.x,
-        y: prev[id].y + info.offset.y,
+        ...prev[id],
+        position:{
+          x: prev[id].position.x + info.offset.x,
+          y: prev[id].position.y + info.offset.y,
+        }
       },
     }));
   };

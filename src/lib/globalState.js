@@ -1,3 +1,4 @@
+import { X } from "lucide-react";
 import { create } from "zustand";
 
 export const database = create((set, get) => ({
@@ -11,11 +12,25 @@ export const database = create((set, get) => ({
       username:"User"
     },
     "searchWid":{
-      isTrue:true,
+      isSearch:true,
       position:{
         x:10, y:10
       }
     },
+    "clockWid":{
+      isClock:true,
+      anaLog:true,
+      position:{
+        x:10, y:200
+      }
+    },
+    "weatherWid":{
+      isWeather:true,
+      apiKey:"",
+      position:{
+        x:0, y:0,
+      }
+    }
   },
   
 
@@ -28,7 +43,7 @@ export const database = create((set, get) => ({
 
     Object.keys(data).forEach(key=>{
         const value = data[key];
-        console.log(value)
+       // console.log(value)
     
         if (typeof value === "object" && !Array.isArray(value)) {
           newDb[key] = {
@@ -49,7 +64,7 @@ export const database = create((set, get) => ({
         localStorage.setItem("Saved", JSON.stringify(newDb));
       }
     }
-    console.log(newDb)
+    //console.log(newDb)
 
     set({ db: newDb });
   }

@@ -2,21 +2,24 @@ import { toggler } from "../../lib/globalToggles";
 import HandleBGUpload from "../../utils/Handlebg";
 import ClockMgmt from "./components/clock/clockmgmt";
 import SearchBar from "./components/searchBox";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DraggableWidget from "../../utils/dragDropHelper";
+import { database } from "../../lib/globalState";
 
 export default function Widgets() {
   const toggleVideo = toggler((stat) => stat.toggleVideo);
   const toggleEdit = toggler(stat=> stat.toggleEdit)
   const { toggleTab } = toggler();
+  const {db, setDB} = database();
+  let {clockWid, searchWid} = db;
 
-  // ✅ Use x/y instead of top/left (no lag)
-  const [positions, setPositions] = useState({
-    searchWid: { x: 10, y: 10 },
-    clockWid: { x: 10, y: 200 },
-    weatherWid: {x:200, y: 10}
-  });
+  const [positions, setPositions] = useState({clockWid, searchWid});
 
+  useEffect(()=>{
+    let {clockWid, searchWid} = positions;
+    let data = {clockWid,searchWid}
+    setDB({data,isGet:false})
+  },[positions])
 
   return (
     <div className="thonePrincess z-10 bg-transparent relative h-screen w-screen">
@@ -32,7 +35,7 @@ export default function Widgets() {
 
      <DraggableWidget 
         id="searchWid"
-        position={positions.searchWid}
+        position={positions.searchWid.position}
         setPositions={setPositions}
         toggleEdit={toggleEdit}
      >
@@ -41,7 +44,7 @@ export default function Widgets() {
 
      <DraggableWidget
         id="clockWid"
-        position={positions.clockWid}
+        position={positions.clockWid.position}
         setPositions={setPositions}
         toggleEdit={toggleEdit}
     >
