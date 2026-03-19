@@ -49,6 +49,7 @@ export const database = create((set, get) => ({
         localStorage.setItem("Saved", JSON.stringify(newDb));
       }
     }
+    console.log(newDb)
 
     set({ db: newDb });
   }
