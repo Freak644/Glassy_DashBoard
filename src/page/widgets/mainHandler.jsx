@@ -5,15 +5,16 @@ import SearchBar from "./components/searchBox";
 import { useEffect, useState } from "react";
 import DraggableWidget from "../../utils/dragDropHelper";
 import { database } from "../../lib/globalState";
+import BaseWeather from "./components/weather/baseComp";
 
 export default function Widgets() {
   const toggleVideo = toggler((stat) => stat.toggleVideo);
   const toggleEdit = toggler(stat=> stat.toggleEdit)
   const { toggleTab } = toggler();
   const {db, setDB} = database();
-  let {clockWid, searchWid} = db;
+  let {clockWid, searchWid, weatherWid} = db;
 
-  const [positions, setPositions] = useState({clockWid, searchWid});
+  const [positions, setPositions] = useState({clockWid, searchWid, weatherWid});
 
   useEffect(()=>{
     let {clockWid, searchWid} = positions;
@@ -53,11 +54,11 @@ export default function Widgets() {
 
     {positions?.weatherWid?.isVisible && <DraggableWidget
         id="weatherWid"
-        position={positions.clockWid}
+        position={positions.weatherWid.position}
         setPositions={setPositions}
         toggleEdit={toggleEdit}
     >
-
+      <BaseWeather />
     </DraggableWidget>}
 
       {toggleVideo && <HandleBGUpload />}

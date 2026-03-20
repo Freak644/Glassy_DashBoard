@@ -28,7 +28,7 @@ export const database = create((set, get) => ({
       isVisible:true,
       apiKey:"",
       position:{
-        x:0, y:0,
+        x:50, y:250,
       }
     }
   },
