@@ -23,6 +23,16 @@ export default function DraggableWidget({
     }));
   };
 
+  const hideWid = (crntID) => {
+    setPositions((prev)=> ({
+      ...prev,
+      [crntID]: {
+        ...prev[crntID],
+        isVisible:false
+      }
+    }))
+  }
+
   return (
     <motion.div
       drag={toggleEdit}
@@ -44,7 +54,7 @@ export default function DraggableWidget({
             className="bx bxs-grid cursor-grab active:cursor-grabbing"
             onPointerDown={(e) => controls.start(e)}
           ></i>
-          <i className="bx bx-x"></i>
+          <i className="bx bx-x" onClick={()=>hideWid(id)}></i>
         </div>
       )}
 

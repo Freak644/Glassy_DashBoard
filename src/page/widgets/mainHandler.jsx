@@ -33,32 +33,32 @@ export default function Widgets() {
         </div>
       )}
 
-     <DraggableWidget 
+     {positions?.searchWid.isVisible && <DraggableWidget 
         id="searchWid"
         position={positions.searchWid.position}
         setPositions={setPositions}
         toggleEdit={toggleEdit}
      >
         <SearchBar />
-     </DraggableWidget>
+     </DraggableWidget>}
 
-     <DraggableWidget
+     {positions?.clockWid.isVisible && <DraggableWidget
         id="clockWid"
         position={positions.clockWid.position}
         setPositions={setPositions}
         toggleEdit={toggleEdit}
     >
         <ClockMgmt />
-    </DraggableWidget>
+    </DraggableWidget>}
 
-    <DraggableWidget
+    {positions?.weatherWid?.isVisible && <DraggableWidget
         id="weatherWid"
         position={positions.clockWid}
         setPositions={setPositions}
         toggleEdit={toggleEdit}
     >
 
-    </DraggableWidget>
+    </DraggableWidget>}
 
       {toggleVideo && <HandleBGUpload />}
     </div>

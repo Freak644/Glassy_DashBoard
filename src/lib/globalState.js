@@ -12,20 +12,20 @@ export const database = create((set, get) => ({
       username:"User"
     },
     "searchWid":{
-      isSearch:true,
+      isVisible:true,
       position:{
         x:10, y:10
       }
     },
     "clockWid":{
-      isClock:true,
+      isVisible:true,
       anaLog:true,
       position:{
         x:10, y:200
       }
     },
     "weatherWid":{
-      isWeather:true,
+      isVisible:true,
       apiKey:"",
       position:{
         x:0, y:0,
@@ -58,7 +58,7 @@ export const database = create((set, get) => ({
     if (!isGet) {
       if (typeof chrome !== "undefined" && chrome.storage) {
         chrome.storage.local.set({ db: newDb }, () => {
-          console.log("Saved", newDb);
+          console.log("Saved");
         });
       } else {
         localStorage.setItem("Saved", JSON.stringify(newDb));
