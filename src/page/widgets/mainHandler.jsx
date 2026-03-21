@@ -58,7 +58,7 @@ export default function Widgets() {
         setPositions={setPositions}
         toggleEdit={toggleEdit}
     >
-      <BaseWeather />
+      <BaseWeather API={positions.weatherWid.apiKey} />
     </DraggableWidget>}
 
       {toggleVideo && <HandleBGUpload />}

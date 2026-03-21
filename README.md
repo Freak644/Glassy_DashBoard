@@ -28,6 +28,14 @@ Enjoy 🔥
 
 
 
+## Weather API Notice
+
+This project uses the OpenWeatherMap API for weather data.
+
+in free plan there is rate limit, so if you want to use weather Widget please create a API on your own and set it up to featch live weather, Click Here to watch setup video 
+
+
+
 ---
 ## 📂 Project Structure
 
