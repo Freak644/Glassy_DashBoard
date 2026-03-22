@@ -27,6 +27,7 @@ export const database = create((set, get) => ({
     "weatherWid":{
       isVisible:true,
       apiKey:"",
+      city:"",
       position:{
         x:50, y:250,
       }

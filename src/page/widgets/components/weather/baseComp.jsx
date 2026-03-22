@@ -1,10 +1,11 @@
 import WeatherAPI from "./widLib/apiHelder";
+import WeatherCard from "./widLib/weatherCard";
 
 export default function BaseWeather({API, setData}) {
     
     return(
         <div className="blurBg relative h-52 w-80">
-            {API.length === 0 ? <WeatherAPI setData={setData}/> : <></>}
+            {API.length === 0 ? <WeatherAPI setData={setData}/> : <WeatherCard/>}
         </div>
     )
 }
