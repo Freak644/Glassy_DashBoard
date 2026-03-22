@@ -3,7 +3,7 @@ import { motion, useDragControls } from "framer-motion";
 export default function DraggableWidget({
   id,
   position,
-  setPositions,
+  setdata,
   toggleEdit,
   children,
   className = "",
@@ -11,7 +11,7 @@ export default function DraggableWidget({
   const controls = useDragControls();
 
   const handleDragEnd = (e, info) => {
-    setPositions((prev) => ({
+    setdata((prev) => ({
       ...prev,
       [id]: {
         ...prev[id],
@@ -24,7 +24,7 @@ export default function DraggableWidget({
   };
 
   const hideWid = (crntID) => {
-    setPositions((prev)=> ({
+    setdata((prev)=> ({
       ...prev,
       [crntID]: {
         ...prev[crntID],

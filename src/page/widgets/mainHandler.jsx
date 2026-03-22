@@ -14,13 +14,11 @@ export default function Widgets() {
   const {db, setDB} = database();
   let {clockWid, searchWid, weatherWid} = db;
 
-  const [positions, setPositions] = useState({clockWid, searchWid, weatherWid});
+  const [data, setdata] = useState({clockWid, searchWid, weatherWid});
 
   useEffect(()=>{
-    let {clockWid, searchWid} = positions;
-    let data = {clockWid,searchWid}
     setDB({data,isGet:false})
-  },[positions])
+  },[data])
 
   return (
     <div className="thonePrincess z-10 bg-transparent relative h-screen w-screen">
@@ -34,31 +32,31 @@ export default function Widgets() {
         </div>
       )}
 
-     {positions?.searchWid.isVisible && <DraggableWidget 
+     {data?.searchWid.isVisible && <DraggableWidget 
         id="searchWid"
-        position={positions.searchWid.position}
-        setPositions={setPositions}
+        position={data.searchWid.position}
+        setdata={setdata}
         toggleEdit={toggleEdit}
      >
         <SearchBar />
      </DraggableWidget>}
 
-     {positions?.clockWid.isVisible && <DraggableWidget
+     {data?.clockWid.isVisible && <DraggableWidget
         id="clockWid"
-        position={positions.clockWid.position}
-        setPositions={setPositions}
+        position={data.clockWid.position}
+        setdata={setdata}
         toggleEdit={toggleEdit}
     >
         <ClockMgmt />
     </DraggableWidget>}
 
-    {positions?.weatherWid?.isVisible && <DraggableWidget
+    {data?.weatherWid?.isVisible && <DraggableWidget
         id="weatherWid"
-        position={positions.weatherWid.position}
-        setPositions={setPositions}
+        position={data.weatherWid.position}
+        setdata={setdata}
         toggleEdit={toggleEdit}
     >
-      <BaseWeather API={positions.weatherWid.apiKey} />
+      <BaseWeather API={data.weatherWid.apiKey} setData={setdata} />
     </DraggableWidget>}
 
       {toggleVideo && <HandleBGUpload />}
