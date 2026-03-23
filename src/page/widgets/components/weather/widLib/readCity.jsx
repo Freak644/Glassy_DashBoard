@@ -18,7 +18,7 @@ export default function AskCity({crntData}) {
             <form action="" onSubmit={handleName} className="p-1 flex items-center flex-col" >
                 <div className="flex items-center flex-row p-1 w-full gap-5 relative">
                    
-                    <input name="key" type="text" placeholder="API Key" className={`p-1 w-50 pl-2.5 border rounded-lg 
+                    <input name="key" type="text" placeholder="City" className={`p-1 w-50 pl-2.5 border rounded-lg 
                       `} /> 
 
                     <button type="submit" className="bg-green-500 text-white font-bold p-1.5 rounded-lg cursor-pointer hover:bg-green-600">Save</button>
