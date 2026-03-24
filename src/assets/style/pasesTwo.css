@@ -41,3 +41,36 @@
     }
 }
 
+.loader {
+    height: 70px; width: 70px;
+    position: relative;
+    border-radius: 50%;
+    border: 6px solid rgba(128, 128, 128, 0.5);
+    display: grid;
+    place-items: center;
+    animation: miniLoader 3s infinite;
+}
+
+.loader::after,
+.loader::before {
+    content: '';
+    border-radius: 50%;
+    border: 6px solid transparent;
+    grid-area: 1/1;
+    animation: miniLoader 3s infinite; 
+    position: absolute;
+    inset: -5px;
+}
+
+.loader::after {
+    border-color: rgba(183, 0, 255, 0.608) transparent transparent;
+    animation-direction: alternate-reverse;
+}
+
+.loader::before {
+    border-color: rgba(255, 191, 0, 0.736) transparent transparent;
+}
+
+@keyframes miniLoader {
+    100%{transform: rotate(1turn);}
+}
