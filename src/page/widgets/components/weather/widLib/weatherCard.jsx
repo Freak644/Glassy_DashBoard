@@ -10,18 +10,25 @@ export default function WeatherCard() {
     let [weatherData,setData] = useState({});
 
     const featchWeather = async (city, api_key) => {
+        if (Object.keys(weatherData).length !== 0) return;
         let rqst = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}&units=metric`)
         let data = await rqst.json();
         console.log(data)
         setData(data);
     }
 
-    useEffect(()=>{
-        if (myData.city.length == 0) return;
-        let {city, apiKey} = myData;
-        featchWeather(city, apiKey);
-        
-    }, [myData])
+
+    useEffect(() => {
+        if (!myData.city || Object.keys(weatherData).length !== 0) return;
+
+        const { city, apiKey } = myData;
+
+        const interval = setInterval(() => {
+            featchWeather(city, apiKey);
+        }, 5000);
+
+        return () => clearInterval(interval);
+    }, [myData, weatherData]);
 
     const getDirection = () => {
         const deg = weatherData?.wind?.deg;
