@@ -33,105 +33,106 @@ export const database = create((set, get) => ({
       }
     },
     "bookmarks" : {
-    Social: [
-      {
-        url: "https://www.facebook.com/",
-        icon: "https://www.google.com/s2/favicons?sz=64&domain=facebook.com",
-        name: "Facebook"
-      },
-      {
-        url: "https://web.whatsapp.com/",
-        icon: "https://www.google.com/s2/favicons?sz=64&domain=whatsapp.com",
-        name: "WhatsApp"
-      },
-      {
-        url: "https://www.linkedin.com/",
-        icon: "https://www.google.com/s2/favicons?sz=64&domain=linkedin.com",
-        name: "LinkedIn"
-      },
-      {
-        url: "https://twitter.com/",
-        icon: "https://www.google.com/s2/favicons?sz=64&domain=twitter.com",
-        name: "Twitter"
-      }
-    ],
 
-    Dev: [
-      {
-        url: "https://github.com/",
-        icon: "https://www.google.com/s2/favicons?sz=64&domain=github.com",
-        name: "GitHub"
-      },
-      {
-        url: "https://stackoverflow.com/",
-        icon: "https://www.google.com/s2/favicons?sz=64&domain=stackoverflow.com",
-        name: "StackOverflow"
-      },
-      {
-        url: "https://www.codecove.com/",
-        icon: "https://www.google.com/s2/favicons?sz=64&domain=codecove.com",
-        name: "CodeCove"
-      },
-      {
-        url: "https://codepen.io/",
-        icon: "https://www.google.com/s2/favicons?sz=64&domain=codepen.io",
-        name: "CodePen"
-      }
-    ],
+      Social: [
+        {
+          url: "https://www.facebook.com/",
+          icon: "https://www.google.com/s2/favicons?sz=64&domain=facebook.com",
+          name: "Facebook"
+        },
+        {
+          url: "https://web.whatsapp.com/",
+          icon: "https://www.google.com/s2/favicons?sz=64&domain=whatsapp.com",
+          name: "WhatsApp"
+        },
+        {
+          url: "https://www.linkedin.com/",
+          icon: "https://www.google.com/s2/favicons?sz=64&domain=linkedin.com",
+          name: "LinkedIn"
+        },
+        {
+          url: "https://twitter.com/",
+          icon: "https://www.google.com/s2/favicons?sz=64&domain=twitter.com",
+          name: "Twitter"
+        }
+      ],
 
-    Learning: [
-      {
-        url: "https://www.youtube.com/",
-        icon: "https://www.google.com/s2/favicons?sz=64&domain=youtube.com",
-        name: "YouTube"
-      },
-      {
-        url: "https://monkeytype.com/",
-        icon: "https://www.google.com/s2/favicons?sz=64&domain=monkeytype.com",
-        name: "Monkeytype"
-      },
-      {
-        url: "https://www.geeksforgeeks.org/",
-        icon: "https://www.google.com/s2/favicons?sz=64&domain=geeksforgeeks.org",
-        name: "GeeksforGeeks"
-      },
-      {
-        url: "https://www.freecodecamp.org/",
-        icon: "https://www.google.com/s2/favicons?sz=64&domain=freecodecamp.org",
-        name: "freeCodeCamp"
-      }
-    ],
+      Dev: [
+        {
+          url: "https://github.com/",
+          icon: "https://www.google.com/s2/favicons?sz=64&domain=github.com",
+          name: "GitHub"
+        },
+        {
+          url: "https://stackoverflow.com/",
+          icon: "https://www.google.com/s2/favicons?sz=64&domain=stackoverflow.com",
+          name: "StackOverflow"
+        },
+        {
+          url: "https://www.codecove.com/",
+          icon: "https://www.google.com/s2/favicons?sz=64&domain=codecove.com",
+          name: "CodeCove"
+        },
+        {
+          url: "https://codepen.io/",
+          icon: "https://www.google.com/s2/favicons?sz=64&domain=codepen.io",
+          name: "CodePen"
+        }
+      ],
 
-    Tools: [
-      {
-        url: "https://chat.openai.com/",
-        icon: "https://www.google.com/s2/favicons?sz=64&domain=openai.com",
-        name: "ChatGPT"
-      },
-      {
-        url: "https://mail.google.com/",
-        icon: "https://www.google.com/s2/favicons?sz=64&domain=gmail.com",
-        name: "Gmail"
-      },
-      {
-        url: "https://drive.google.com/",
-        icon: "https://www.google.com/s2/favicons?sz=64&domain=drive.google.com",
-        name: "Google Drive"
-      },
-      {
-        url: "https://calendar.google.com/",
-        icon: "https://www.google.com/s2/favicons?sz=64&domain=calendar.google.com",
-        name: "Calendar"
-      }
-    ]
-    },
-    "myBookmarks":[
+      Learning: [
+        {
+          url: "https://www.youtube.com/",
+          icon: "https://www.google.com/s2/favicons?sz=64&domain=youtube.com",
+          name: "YouTube"
+        },
+        {
+          url: "https://monkeytype.com/",
+          icon: "https://www.google.com/s2/favicons?sz=64&domain=monkeytype.com",
+          name: "Monkeytype"
+        },
+        {
+          url: "https://www.geeksforgeeks.org/",
+          icon: "https://www.google.com/s2/favicons?sz=64&domain=geeksforgeeks.org",
+          name: "GeeksforGeeks"
+        },
+        {
+          url: "https://www.freecodecamp.org/",
+          icon: "https://www.google.com/s2/favicons?sz=64&domain=freecodecamp.org",
+          name: "freeCodeCamp"
+        }
+      ],
 
-    ],
-    "topBookSlide":{
-      isTrue:false,
-      data:[]
-    }
+      Tools: [
+        {
+          url: "https://chat.openai.com/",
+          icon: "https://www.google.com/s2/favicons?sz=64&domain=openai.com",
+          name: "ChatGPT"
+        },
+        {
+          url: "https://mail.google.com/",
+          icon: "https://www.google.com/s2/favicons?sz=64&domain=gmail.com",
+          name: "Gmail"
+        },
+        {
+          url: "https://drive.google.com/",
+          icon: "https://www.google.com/s2/favicons?sz=64&domain=drive.google.com",
+          name: "Google Drive"
+        },
+        {
+          url: "https://calendar.google.com/",
+          icon: "https://www.google.com/s2/favicons?sz=64&domain=calendar.google.com",
+          name: "Calendar"
+        }
+      ]
+      },
+      "myBookmarks":[
+
+      ],
+      "topBookSlide":{
+        isTrue:false,
+        data:[]
+      }
   },
   
 

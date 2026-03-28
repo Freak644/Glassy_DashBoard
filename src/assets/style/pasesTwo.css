@@ -74,3 +74,24 @@
 @keyframes miniLoader {
     100%{transform: rotate(1turn);}
 }
+
+.temp{
+    border: 1px solid white;
+}
+
+.inCommingAnim {
+  opacity: 0;
+  transform: perspective(800px) translateX(-100%) rotateY(-30deg) scale(0.2);
+  animation: macIn 0.7s ease forwards;
+}
+
+@keyframes macIn {
+  100% {
+    opacity: 1;
+    transform: perspective(800px) translateX(0) rotateY(0) scale(1);
+  }
+}
+
+.outAnim {
+    transform: perspective(800px) translateX(-100%) rotateY(-30deg) scale(0.2);
+}

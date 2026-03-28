@@ -33,7 +33,7 @@ export default function BackGround() {
         };
     }, [data]);
     return(
-        <div className="thonePrincess">
+        <div className="thornPrincess">
             {data?.type == "video" ? <VideoBg isBlur={data.isBlur} blogUrl={blogUrl}/> :
             <ImageBg isBlur={data?.isBlur} blogURL={blogUrl} />}
         </div>

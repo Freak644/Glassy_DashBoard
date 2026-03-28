@@ -21,7 +21,7 @@ export default function Widgets() {
   },[data])
 
   return (
-    <div className="thonePrincess z-10 bg-transparent relative h-screen w-screen">
+    <div className="thornPrincess z-10 bg-transparent relative h-screen w-screen">
 
       {toggleEdit && (
         <div

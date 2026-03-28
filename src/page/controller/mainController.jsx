@@ -8,7 +8,9 @@ export default function Controller({settings}) {
     return(
         <div id="controlPanel" className="blurBg z-20">
             <ul>
-                <li><i className='bx bxs-bookmark-heart' ></i>BM</li>
+                <li onClick={()=>{
+                    toggleTab({toggleBookmarks:true});
+                }}><i className='bx bxs-bookmark-heart' ></i>BM</li>
                 <li value={null} onClick={handleBg}><i id="null" className="bx bx-image"></i>BG</li>
                 <li><i className="bx bx-time"></i>Clock</li>
                 <li onClick={()=>{

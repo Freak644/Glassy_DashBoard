@@ -3,6 +3,7 @@ import { database } from "../lib/globalState"
 import BackGround from "./background/backgroundMgmt";
 import Controller from "./controller/mainController";
 import Widgets from "./widgets/mainHandler";
+import MainBookmark from "./controller/mainBookmark";
 export default function NewTab() {
     const data = database(stat=>stat.db);
     useEffect(()=>{
@@ -13,6 +14,7 @@ export default function NewTab() {
             <BackGround/>
             <Controller />
             <Widgets />
+            <MainBookmark/>
         </div>
     )
 }
