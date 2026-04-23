@@ -7,7 +7,7 @@ export default function MainBookmark() {
 
     return(
         <>
-            {bookmark && <div className="thornPrincess inCommingAnim flex items-center justify-center bg-white/5 backdrop-blur-2xl z-20">
+            {bookmark && <div className="thornPrincess inCommingAnim flex items-center justify-center bg-white/5 backdrop-blur-lg z-20">
                 <BookmarkList/>
             </div>}
         </>
