@@ -128,7 +128,24 @@ export const database = create((set, get) => ({
       ]
       },
       "myBookmarks":[
-
+        
+      ],
+      "quickAcces":[
+        {
+          url: "https://mail.google.com/",
+          icon: "	https://www.gstatic.com/images/branding/product/2x/gmail_2020q4_48dp.png",
+          name: "Gmail"
+        },
+        {
+          url: "https://www.youtube.com/",
+          icon: "https://www.google.com/s2/favicons?sz=64&domain=youtube.com",
+          name: "YouTube"
+        },
+        {
+          url: "https://monkeytype.com/",
+          icon: "https://www.google.com/s2/favicons?sz=64&domain=monkeytype.com",
+          name: "Monkeytype"
+        }
       ],
       "topBookSlide":{
         isTrue:false,

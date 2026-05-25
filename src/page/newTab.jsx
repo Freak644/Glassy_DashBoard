@@ -4,6 +4,7 @@ import BackGround from "./background/backgroundMgmt";
 import Controller from "./controller/mainController";
 import Widgets from "./widgets/mainHandler";
 import MainBookmark from "./controller/mainBookmark";
+import AllAps from "./widgets/Homeaps/homeAll";
 export default function NewTab() {
     const data = database(stat=>stat.db);
     useEffect(()=>{
@@ -15,6 +16,7 @@ export default function NewTab() {
             <Controller />
             <Widgets />
             <MainBookmark/>
+            <AllAps/>
         </div>
     )
 }
