@@ -13,22 +13,23 @@ export default  function WeatherAPI({setData}) {
         evnt.preventDefault();
         let formData = new FormData(evnt.target);
         let {key} = Object.fromEntries(formData);
-
+        let timeOut;
         try {
             let rkv = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=DELHI&appid=${key}&units=metric`)
             let data = await rkv.json();
             console.log(data)
             if (data.cod === 200) {
                 setResult({isResult:true, isTrue: true})
-                setTimeout(() => {
+                timeOut = setTimeout(() => {
                     setData(prev=>({
                         ...prev,
                         "weatherWid":{
                             ...prev["weatherWid"],
                             apiKey:key
                         }
-                    }))
-                }, 1200);
+                    }));
+                    clearTimeout(timeOut);
+                }, 1000);
             } else {
                 throw new Error(data.message);
                 

@@ -2,6 +2,11 @@ import { database } from "../../../lib/globalState"
 
 export default function AllAps() {
     const quickAc = database(stat=> stat.db.quickAcces || []);
+
+    const handleClick = url => {
+        window.location.href=url
+    }
+
      return (
         <div className="h-18 w-70 rounded-lg allApps overflow-hidden blurBg absolute bottom-7 z-20 myShadow">
             <div className="underTaker justify-start!">
@@ -12,7 +17,7 @@ export default function AllAps() {
                 <div className="quickAccessH h-full w-48 flex items-center justify-center gap-2.5">
                     {
                         quickAc.map(app=>(
-                            <div title={app?.name} className="allApps cursor-pointer flex hover:scale-105 items-center justify-center h-13 w-13 rounded-lg border border-white/25 bg-blue-500/30">
+                            <div onClick={()=>handleClick(app.url)} title={app?.name} className="allApps cursor-pointer flex hover:scale-105 items-center justify-center h-13 w-13 rounded-lg border border-white/25 bg-blue-500/30">
                                 <img src={app.icon} className="h-4/5! w-4/5!" alt="" />
                             </div>
                         ))

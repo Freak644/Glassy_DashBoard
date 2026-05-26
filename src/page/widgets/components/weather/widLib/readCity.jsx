@@ -1,15 +1,24 @@
+
 import { database } from "../../../../../lib/globalState"
+import { toast } from "react-toastify";
 
 export default function AskCity({crntData}) {
     let {setDB} = database();
 
-    const handleName = (evnt) => {
+    const handleName = async (evnt) => {
         evnt.preventDefault();
         const formData = new FormData(evnt.target);
         const {key} = Object.fromEntries(formData);
+        let rkv = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${key}&appid=${crntData.apiKey}&units=metric`);
+        let tempData = await rkv.json();
+        console.log(tempData);
+        if (tempData.cod !== 200) {
+            return toast.error("City Not Found");
+        }
+
         let conctructure = {...crntData, city:key}
         let data = {weatherWid:conctructure}
-        setDB({data, isGet:false})
+        setDB({data, isGet:false});
     }
 
     return(
