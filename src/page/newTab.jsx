@@ -20,8 +20,16 @@ export default function NewTab() {
             <AllAps/>
 
             {tabsObj.allApps && <div className="thornPrincess inCommingAnim flex items-center justify-center bg-white/5 backdrop-blur-lg z-20">
+                <div className="underTaker">
+                    <button className="flex absolute top-2.5 right-2.5 items-center justify-center w-10 h-10 hover:bg-gray-500/25 hover:rotate-180 duration-300 transition-all cursor-pointer text-red-500! font-bold text-2xl rounded-full">
+                        X
+                    </button>
 
-                </div>}
+                    <div className="innerContainer-forApp h-4/5 w-250 bg-gray-700/10 rounded-lg shadow">
+
+                    </div>
+                </div>
+            </div>}
         </div>
     )
 }
