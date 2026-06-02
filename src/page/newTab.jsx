@@ -5,6 +5,7 @@ import Controller from "./controller/mainController";
 import Widgets from "./widgets/mainHandler";
 import MainBookmark from "./controller/mainBookmark";
 import AllAps from "./widgets/Homeaps/homeAll";
+import AppList from "./widgets/Homeaps/apsList";
 export default function NewTab() {
     const data = database(stat=>stat.db);
     const tabsObj = useTabToggle(stat => stat.tabObj);
@@ -25,11 +26,12 @@ export default function NewTab() {
                         X
                     </button>
 
-                    <div className="innerContainer-forApp h-4/5 w-250 bg-gray-700/10 rounded-lg shadow">
-
+                    <div className="innerContainer-forApp h-4/6 w-200 bg-black/50 rounded-lg shadow">
+                        <AppList/>
                     </div>
                 </div>
             </div>}
+
         </div>
     )
 }
