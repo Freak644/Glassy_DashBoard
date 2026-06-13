@@ -392,7 +392,167 @@ export const Apps = create((set, get) => ({
           url: "https://spotify.com/",
           icon: "https://www.google.com/s2/favicons?sz=64&domain=spotify.com",
           name: "Spotify"
-        }
+        },
+        {
+  url: "https://outlook.live.com/",
+  name: "Outlook"
+},
+{
+  url: "https://onedrive.live.com/",
+  name: "OneDrive"
+},
+{
+  url: "https://office.com/",
+  name: "Microsoft 365"
+},
+{
+  url: "https://teams.microsoft.com/",
+  name: "Teams"
+},
+{
+  url: "https://copilot.microsoft.com/",
+  name: "Copilot"
+},
+{
+  url: "https://cloudflare.com/",
+  name: "Cloudflare"
+},
+{
+  url: "https://railway.app/",
+  name: "Railway"
+},
+{
+  url: "https://render.com/",
+  name: "Render"
+},
+{
+  url: "https://netlify.com/",
+  name: "Netlify"
+},
+{
+  url: "https://supabase.com/",
+  name: "Supabase"
+},
+{
+  url: "https://firebase.google.com/",
+  name: "Firebase"
+},
+{
+  url: "https://planetscale.com/",
+  name: "PlanetScale"
+},
+{
+  url: "https://figma.com/",
+  name: "Figma"
+},
+{
+  url: "https://www.canva.com/",
+  name: "Canva"
+},
+{
+  url: "https://dribbble.com/",
+  name: "Dribbble"
+},
+{
+  url: "https://behance.net/",
+  name: "Behance"
+},
+{
+  url: "https://coolors.co/",
+  name: "Coolors"
+},
+{
+  url: "https://twitch.tv/",
+  name: "Twitch"
+},
+{
+  url: "https://medium.com/",
+  name: "Medium"
+},
+{
+  url: "https://substack.com/",
+  name: "Substack"
+},
+{
+  url: "https://pinterest.com/",
+  name: "Pinterest"
+},
+{
+  url: "https://temp-mail.org/",
+  name: "Temp Mail"
+},
+{
+  url: "https://speedtest.net/",
+  name: "Speedtest"
+},
+{
+  url: "https://archive.org/",
+  name: "Internet Archive"
+},
+{
+  url: "https://web.whatsapp.com/",
+  name: "WhatsApp"
+},
+{
+  url: "https://telegram.org/",
+  name: "Telegram"
+},
+{
+  url: "https://leetcode.com/",
+  name: "LeetCode"
+},
+{
+  url: "https://hackerrank.com/",
+  name: "HackerRank"
+},
+{
+  url: "https://excalidraw.com/",
+  name: "Excalidraw"
+},
+{
+  url: "https://regex101.com/",
+  name: "Regex101"
+},
+{
+  url: "https://jsonformatter.org/",
+  name: "JSON Formatter"
+},
+{
+  url: "https://caniuse.com/",
+  name: "Can I Use"
+},
+{
+  url: "https://roadmap.sh/",
+  name: "Roadmap"
+},
+{
+  url: "https://npmjs.com/",
+  name: "NPM"
+},
+{
+  url: "https://bun.sh/",
+  name: "Bun"
+},
+{
+  url: "https://react.dev/",
+  name: "React"
+},
+{
+  url: "https://tailwindcss.com/",
+  name: "Tailwind"
+},
+{
+  url: "https://nextjs.org/",
+  name: "Next.js"
+},
+{
+  url: "https://nodejs.org/",
+  name: "Node.js"
+},
+{
+  url: "https://typescriptlang.org/",
+  name: "TypeScript"
+}
       ],
 
       setApp: (newApp = {}) => {
