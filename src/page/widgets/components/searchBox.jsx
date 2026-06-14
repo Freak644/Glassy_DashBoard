@@ -26,7 +26,7 @@ export default function SearchBar() {
              </form> :
              <p id="greet">Wellcome! {username} { username === "User" && <i onClick={()=> setEdit(true)} className="bx bx-pencil cursor-pointer"></i>}</p>
              }
-             <form action="" onsubmit="">
+             <form action="" onSubmit={handle}>
                  <input autoComplete="off" type="text" name="query" placeholder="Find or Enter URL" />
                  <i className="bx bx-search-alt"></i>
              </form>

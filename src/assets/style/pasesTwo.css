@@ -131,3 +131,18 @@
         }
     }
 }
+
+.dropContainer {
+    .dropMenu {
+        transform: translateY(-20px);
+        opacity: 0;
+        transition: .4s ease-in-out;
+    }
+
+    &:hover {
+        .dropMenu {
+            transform: translateY(10px);
+            opacity: 1;
+        }
+    }
+}

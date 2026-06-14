@@ -30,7 +30,7 @@ export const database = create((set, get) => ({
       apiKey:"",
       city:"",
       position:{
-        x:50, y:250,
+        x:150, y:250,
       }
     },
     "bookmarks" : {
@@ -556,12 +556,17 @@ export const Apps = create((set, get) => ({
       ],
 
       setApp: (newApp = {}) => {
-        if (Object.keys(newApp).length < 3) return;
+        if (Object.keys(newApp).length < 2) return;
 
-        const allAps = get.array;
-        allAps.push(newApp);
+        const exists = get().array.some(
+          app => app.url === newApp.url
+        );
 
-        set({array: allAps})
+        if (exists) return;
+
+        set((state) => ({
+          array: [...state.array, newApp]
+        }));
       }
 
 }));

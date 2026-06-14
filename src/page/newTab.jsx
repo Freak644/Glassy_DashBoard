@@ -21,10 +21,10 @@ export default function NewTab() {
             {tabsObj.allApps && <div className="thornPrincess inCommingAnim flex items-center justify-center bg-purple-600/15 backdrop-blur-lg z-20">
                 <div className="underTaker">
                     <button onClick={()=>toggleTabs("")} className="flex absolute top-2.5 right-2.5 items-center justify-center w-10 h-10 hover:bg-gray-500/25 hover:rotate-180 duration-300 transition-all cursor-pointer text-red-500! font-bold text-2xl rounded-full">
-                        X
+                        x
                     </button>
 
-                    <div className="innerContainer-forApp h-4/6 w-200 bg-black/30 rounded-lg shadow">
+                    <div className="innerContainer-forApp h-5/7 w-210 bg-black/30 rounded-lg shadow">
                         <AppList/>
                     </div>
                 </div>

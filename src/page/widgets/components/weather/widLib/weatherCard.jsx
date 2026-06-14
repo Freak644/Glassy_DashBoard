@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { database } from "../../../../../lib/globalState";
 import AskCity from "./readCity";
 import CursorImg from '../../../../../assets/cursor.png';
@@ -25,7 +25,7 @@ export default function WeatherCard() {
 
         const interval = setInterval(() => {
             featchWeather(city, apiKey);
-        }, 5000);
+        }, 6000);
 
         return () => clearInterval(interval);
     }, [myData, weatherData]);
@@ -39,33 +39,203 @@ export default function WeatherCard() {
 
         return directions[index];
     };
+
+    const getWeatherGradient = (weatherMain) => {
+        switch (weatherMain) {
+            case "Clear":
+            return "from-sky-300 via-blue-500 to-blue-700";
+
+            case "Clouds":
+            return "from-slate-300 via-slate-500/20 to-slate-750";
+
+            case "Rain":
+            case "Drizzle":
+            return "from-slate-500 via-slate-700/20 to-black/50";
+
+            case "Thunderstorm":
+            return "from-purple-500 via-slate-700/20 to-black/50";
+
+            case "Snow":
+            return "from-sky-200 via-slate-300/20 to-slate-500";
+
+            case "Mist":
+            case "Fog":
+            case "Haze":
+            return "from-gray-300 via-slate-500/20 to-slate-700/30";
+
+            default:
+            return "from-slate-300 via-slate-500 to-slate-950";
+        }
+        };
+
+        const gradientClass = useMemo(() => {
+            return getWeatherGradient(weatherData?.weather?.[0]?.main);
+        }, [weatherData]);
+
     return(
-        <div className="underTaker">
+        <div className="p-1">
             {myData?.city.length === 0 ? <AskCity crntData={myData} /> :
             <>
                 {Object.keys(weatherData).length === 0 ? <div className="loader"></div> :
                 <>
-                <div className="imgDiv h-25 w-25 absolute top-1 left-1">
-                    <img src={`https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`} alt="" />
-                </div>
+                <div
+                    className={`
+                        relative
+                        overflow-hidden
+                        rounded-3xl
+                        p-4
+                        h-full
+                       
+                        bg-linear-to-br
+                        ${gradientClass}
+                       
+                        backdrop-blur-lg
+                        shadow-2xl
+                    `}
+                    >
+                    {/* Background Glow */}
+                    <div
+                        className="
+                        absolute
+                        h-40
+                        w-40
+                        rounded-full
+                        bg-blue-400/20
+                        blur-lg
+                        -bottom-10
+                        right-0
+                        pointer-events-none
+                        "
+                    />
 
-                <p className="absolute left-27 top-3.5 font-bold text-4xl">{Math.round(weatherData.main.temp)}<span className="text-lg absolute top-0">℃</span></p>
-                <p className="absolute p-1 w-50 right-1 flex items-center flex-col top-5.5 text-lg font-semibold">{`${"📍"+weatherData.name}`} <span className="text-[15px] text-gray-400!">{weatherData.weather[0].description.toUpperCase()}</span></p>
-                <div className=" h-30 relative top-12 w-full left-1/7">
-                    <span className="absolute top-1 left-2.5 font-semibold text-[14px]">Wind🍃</span>
-                    <div className="flex items-center flex-col p-1 gap-2.5 absolute top-8 left-2.5">
-                        <img src={CursorImg} className="h-10! w-10!"
-                        style={{
-                            transform: `rotate(${Math.round(weatherData.wind.deg)}deg)`
-                        }} alt="" />
-                        {getDirection()}
+                    {/* Top Section */}
+                    <div className="relative flex items-start flex-row gap-7">
+                        <div className="flex items-center gap-3">
+                        <img
+                            src={`https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`}
+                            className="w-20 h-20 drop-shadow-lg"
+                            alt=""
+                        />
+
+                        <div>
+                            <h1 className="text-5xl font-black leading-none">
+                            {Math.round(weatherData.main.temp)}
+                            <span className="text-xl align-top">°C</span>
+                            </h1>
+
+                            <p className="text-xs text-white/60 mt-1">
+                            Feels like {Math.round(weatherData.main.feels_like)}°C
+                            </p>
+                        </div>
+                        </div>
+
+                        <div className="text-right">
+                        <p className="font-bold text-xl">
+                            📍 {weatherData.name}
+                        </p>
+
+                        <p className="text-sm tracking-wider uppercase text-white/70">
+                            {weatherData.weather[0].description}
+                        </p>
+                        </div>
                     </div>
 
-                    <div className="flex items-center flex-col gap-2 top-1.5  w-25 left-2/5 absolute">
-                        <img src={windGif} className="h-18! w-15!" alt="" />
-                        <span>Speed💨 {weatherData.wind.speed}</span>
+                    {/* Divider */}
+                    <div className="h-px bg-white/10 my-5" />
+
+                    {/* Bottom Stats */}
+                    <div className="grid grid-cols-3 gap-3">
+                        {/* Wind */}
+                        <div
+                        className="
+                            bg-white/10
+                            backdrop-blur-md
+                            rounded-2xl
+                            p-3
+                            flex
+                            flex-col
+                            items-center
+                        "
+                        >
+                        <p className="text-xs text-white/60 uppercase">
+                            Wind
+                        </p>
+
+                        <img
+                            src={CursorImg}
+                            className="w-10! h-10! my-2"
+                            style={{
+                            transform: `rotate(${weatherData.wind.deg}deg)`
+                            }}
+                            alt=""
+                        />
+
+                        <span className="font-bold">
+                            {getDirection()}
+                        </span>
+
+                        <span className="text-xs text-white/70">
+                            {weatherData.wind.speed} m/s
+                        </span>
+                        </div>
+
+                        {/* Humidity */}
+                        <div
+                        className="
+                            bg-white/10
+                            backdrop-blur-md
+                            rounded-2xl
+                            p-3
+                            flex
+                            flex-col
+                            justify-center
+                            items-center
+                        "
+                        >
+                        <p className="text-xs text-white/60 uppercase">
+                            Humidity
+                        </p>
+
+                        <span className="text-3xl mt-2">
+                            💧
+                        </span>
+
+                        <span className="font-bold text-lg">
+                            {weatherData.main.humidity}%
+                        </span>
+                        </div>
+
+                        {/* Pressure */}
+                        <div
+                        className="
+                            bg-white/10
+                            backdrop-blur-md
+                            rounded-2xl
+                            p-3
+                            flex
+                            flex-col
+                            justify-center
+                            items-center
+                        "
+                        >
+                        <p className="text-xs text-white/60 uppercase">
+                            Pressure
+                        </p>
+
+                        <span className="text-3xl mt-2">
+                            🌡️
+                        </span>
+
+                        <span className="font-bold text-lg">
+                            {weatherData.main.pressure}
+                        </span>
+
+                        <span className="text-xs text-white/70">
+                            hPa
+                        </span>
+                        </div>
                     </div>
-                </div>
+                    </div>
                 </>}
             </>
             }

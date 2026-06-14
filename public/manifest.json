@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Glassy Aura Dashboard",
+  "name": "Glassy Dashboard",
   "version": "1.0.0",
   "description": "Aura styled browser UI with custom dashboard tab.",
   "chrome_url_overrides": {
