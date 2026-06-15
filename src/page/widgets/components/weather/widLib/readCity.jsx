@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 
 export default function AskCity({crntData}) {
     let {setDB} = database();
+    
 
     const handleName = async (evnt) => {
         evnt.preventDefault();
@@ -22,7 +23,7 @@ export default function AskCity({crntData}) {
     }
 
     return(
-        <div className="underTaker flex-col gap-6">
+        <div className="underTaker flex-col gap-6 blurBg bg-blue-500/20">
             <p className="font-bold text-2xl">Enter Your City</p>
             <form action="" onSubmit={handleName} className="p-1 flex items-center flex-col" >
                 <div className="flex items-center flex-row p-1 w-full gap-5 relative">

@@ -1,24 +1,54 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import NewTab from "../page/newTab";
-import { database } from "../lib/globalState";
+import { Apps, database } from "../lib/globalState";
 import '../assets/style/pasesTwo.css'
+
 
 export default function MyApp() {
     let {setDB} = database();
-    useState(()=>{
-        if (typeof chrome !== "undefined" && chrome.storage?.local) {
-            chrome.storage.local.get(null, (data) => {
-                if (data?.db && Object.keys(data?.db).length > 0) {
-                    setDB({data:data?.db,isGet:true});
+    let {setApp} = Apps();
+    useEffect(() => {
+            if (typeof chrome !== "undefined" && chrome.storage?.local) {
+                chrome.storage.local.get(["db", "appList"], (data) => {
+
+                    if (data?.db && Object.keys(data.db).length > 0) {
+                        setDB({
+                            data: data.db,
+                            isGet: true
+                        });
+                    }
+
+                    if (Array.isArray(data?.appList) && data.appList.length > 0) {
+                        setApp({
+                            newApp: data.appList,
+                            isGet: true
+                        });
+                    }
+                });
+            } else {
+                const savedDB = JSON.parse(
+                    localStorage.getItem("Saved") || "{}"
+                );
+
+                const appList = JSON.parse(
+                    localStorage.getItem("appList") || "[]"
+                );
+
+                if (Object.keys(savedDB).length > 0) {
+                    setDB({
+                        data: savedDB,
+                        isGet: true
+                    });
                 }
-            });
-        } else {
-           let data = JSON.parse(localStorage.getItem("Saved"));
-           if (data && Object.keys(data).length > 0) {
-               setDB({data,isGet:true});
+
+                if (appList.length > 0) {
+                    setApp({
+                        newApp: appList,
+                        isGet: true
+                    });
+                }
             }
-        }
-    },[])
+        }, []);
     return(
         <NewTab/>
     )

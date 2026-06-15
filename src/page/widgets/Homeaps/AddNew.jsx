@@ -22,7 +22,6 @@ const getWebsiteName = (url) => {
 
       return hostname.charAt(0).toUpperCase() + hostname.slice(1)
       
-      
 };
 
 
@@ -56,16 +55,16 @@ const InstallNewApp = () => {
     name: getWebsiteName(normalizedURL),
   };
 
-  setApp(obj);
+  setApp({newApp:obj,isGet:false});
 
   toast.success("Done");
   active(false)
 };
 
     return(
-        <div className="thornPrincess left-0 bg-purple-500/70 blurBg">
+        <div className="thornPrincess left-0 bg-gray-600/40 backdrop-blur-2xl">
             <div className="underTaker">
-                <div className="h-1/4 relative bg-white/40 border border-cyan-500 translate-y-4 rounded-lg w-100">
+                <div className="h-1/4 relative bg-gray-500/40 border border-cyan-500 translate-y-4 rounded-lg w-100">
                     <p onClick={()=>active(false)} className="absolute hover:scale-95 cursor-pointer -top-2 -right-2 text-red-500! font-bold text-2xl">x</p>
     <div
       className="
@@ -73,7 +72,7 @@ const InstallNewApp = () => {
         h-full
         rounded-3xl
         border border-white/10
-        bg-black/10
+        bg-black/30
         backdrop-blur-xl
         p-5
         flex

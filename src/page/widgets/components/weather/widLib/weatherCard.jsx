@@ -43,25 +43,25 @@ export default function WeatherCard() {
     const getWeatherGradient = (weatherMain) => {
         switch (weatherMain) {
             case "Clear":
-            return "from-sky-300 via-blue-500 to-blue-700";
+            return "from-sky-300/10 via-blue-500/10 to-blue-700/10";
 
             case "Clouds":
-            return "from-slate-300 via-slate-500/20 to-slate-750";
+            return "from-slate-300/10 via-slate-500/10 to-slate-750/10";
 
             case "Rain":
             case "Drizzle":
-            return "from-slate-500 via-slate-700/20 to-black/50";
+            return "from-slate-500/10 via-slate-700/10 to-black/10";
 
             case "Thunderstorm":
-            return "from-purple-500 via-slate-700/20 to-black/50";
+            return "from-purple-500/10 via-slate-700/10 to-black/10";
 
             case "Snow":
-            return "from-sky-200 via-slate-300/20 to-slate-500";
+            return "from-sky-200/10 via-slate-300/10 to-slate-500/10";
 
             case "Mist":
             case "Fog":
             case "Haze":
-            return "from-gray-300 via-slate-500/20 to-slate-700/30";
+            return "from-gray-300/10 via-slate-500/10 to-slate-700/10";
 
             default:
             return "from-slate-300 via-slate-500 to-slate-950";

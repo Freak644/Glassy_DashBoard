@@ -18,7 +18,7 @@ export default function NewTab() {
             <MainBookmark/>
             <AllAps/>
 
-            {tabsObj.allApps && <div className="thornPrincess inCommingAnim flex items-center justify-center bg-purple-600/15 backdrop-blur-lg z-20">
+            {tabsObj.allApps && <div className="thornPrincess inCommingAnim flex items-center justify-center bg-blue-600/15 backdrop-blur-lg z-20">
                 <div className="underTaker">
                     <button onClick={()=>toggleTabs("")} className="flex absolute top-2.5 right-2.5 items-center justify-center w-10 h-10 hover:bg-gray-500/25 hover:rotate-180 duration-300 transition-all cursor-pointer text-red-500! font-bold text-2xl rounded-full">
                         x

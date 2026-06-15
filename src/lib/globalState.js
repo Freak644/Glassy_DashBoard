@@ -173,7 +173,7 @@ export const database = create((set, get) => ({
           };
         } else {
           newDb[key] = value;
-        }
+        } 
     })
     // Save the FULL DB
     if (!isGet) {
@@ -555,19 +555,54 @@ export const Apps = create((set, get) => ({
 }
       ],
 
-      setApp: (newApp = {}) => {
-        if (Object.keys(newApp).length < 2) return;
+      setApp: (dataObj = {}) => {
+    const { newApp, isGet } = dataObj;
+        console.log(newApp, isGet);
+    if (!newApp) return;
 
-        const exists = get().array.some(
-          app => app.url === newApp.url
+    set((state) => {
+        // Convert object -> array
+        const incomingApps = Array.isArray(newApp)
+            ? newApp
+            : [newApp];
+
+        // Remove invalid entries
+        const validApps = incomingApps.filter(
+            app => app && Object.keys(app).length >= 2
         );
 
-        if (exists) return;
+        if (!validApps.length) return state;
 
-        set((state) => ({
-          array: [...state.array, newApp]
-        }));
-      }
+        // Prevent duplicates
+        const uniqueApps = validApps.filter(
+            app => !state.array.some(
+                existing => existing.url === app.url
+            )
+        );
+
+        if (!uniqueApps.length) return state;
+
+        const newList = [...state.array, ...uniqueApps];
+
+        if (!isGet) {
+            if (typeof chrome !== "undefined" && chrome.storage) {
+                chrome.storage.local.set(
+                    { appList: newList },
+                    () => console.log("Saved")
+                );
+            } else {
+                localStorage.setItem(
+                    "appList",
+                    JSON.stringify(newList)
+                );
+            }
+        }
+
+        return {
+            array: newList
+        };
+    });
+}
 
 }));
 

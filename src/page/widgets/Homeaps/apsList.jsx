@@ -7,7 +7,7 @@ export default function AppList () {
     const AllApps = Apps(stat=> stat.array) || [];
     const [myApps,setApps] = useState([]);
     const [inputVal,setVal] = useState("");
-    const [isNew,setNew] = useState(true);
+    const [isNew,setNew] = useState(false);
 
     const handleClick = url => {
         window.location.href=url;
@@ -88,7 +88,7 @@ export default function AppList () {
       flex items-center flex-col gap-2.5 p-2.5">
         <ul className="flex items-strat flex-col gap-2.5 mt-1.5">
           <li onClick={()=>setNew(true)} className="border-b flex items-center justify-start text-gray-600 cursor-pointer"> <i className="bx bxl-android"></i> NewApps</li>
-          <li className="border-b flex items-center justify-start text-gray-600 cursor-pointer"> <i className="bx bxs-trash"></i> Clear</li>
+          <li className="border-b flex items-center justify-start text-gray-600 cursor-pointer"> <i className="bx bxs-trash"></i> Remove</li>
         </ul>
       </div>
     </div>
@@ -99,7 +99,7 @@ export default function AppList () {
             {
                 myApps.map((app,index)=>(
                 <div key={index} className="flex items-center flex-col gap-1.5 h-17 w-14 m-2">
-                    <div onClick={()=>handleClick(app.url)} title={app?.name} className="allApps cursor-pointer flex hover:scale-105 items-center justify-center h-13 w-13 rounded-lg border border-cyan-400/50 bg-purple-400/30">
+                    <div onClick={()=>handleClick(app.url)} title={app?.name} className="allApps cursor-pointer flex hover:scale-105 items-center justify-center h-13 w-13 rounded-lg border border-cyan-400/30 bg-yellow-500/15">
                         <img src={getIcon(app.url)} className="h-4/5! w-4/5!" alt="" />
                     </div>
                     <span className="text-[8px]">{app.name}</span>
