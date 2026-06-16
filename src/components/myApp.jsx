@@ -7,6 +7,7 @@ import '../assets/style/pasesTwo.css'
 export default function MyApp() {
     let {setDB} = database();
     let {setApp} = Apps();
+    let [isReady, setReady] = useState(false);
     useEffect(() => {
             if (typeof chrome !== "undefined" && chrome.storage?.local) {
                 chrome.storage.local.get(["db", "appList"], (data) => {
@@ -35,6 +36,7 @@ export default function MyApp() {
                 );
 
                 if (Object.keys(savedDB).length > 0) {
+                 
                     setDB({
                         data: savedDB,
                         isGet: true
@@ -48,8 +50,14 @@ export default function MyApp() {
                     });
                 }
             }
+
+            setReady(true)
         }, []);
     return(
-        <NewTab/>
+        <>
+        {
+            isReady ? <NewTab/> : <div className="miniLoader"/>
+        }
+        </>
     )
 }

@@ -13,7 +13,7 @@ export default function WeatherCard() {
         if (Object.keys(weatherData).length !== 0) return;
         let rqst = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}&units=metric`)
         let data = await rqst.json();
-        console.log(data)
+        // console.log(data)
         setData(data);
     }
 

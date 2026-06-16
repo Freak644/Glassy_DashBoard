@@ -159,6 +159,7 @@ export const database = create((set, get) => ({
     const current = get().db;
     let {data,isGet} = obj;
 
+
     if (!data || Object.keys(data).length === 0) return;
     const newDb = {...current };
 
@@ -557,7 +558,7 @@ export const Apps = create((set, get) => ({
 
       setApp: (dataObj = {}) => {
     const { newApp, isGet } = dataObj;
-        console.log(newApp, isGet);
+      
     if (!newApp) return;
 
     set((state) => {
