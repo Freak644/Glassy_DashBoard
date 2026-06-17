@@ -11,17 +11,19 @@ export default function Widgets() {
   const toggleVideo = toggler((stat) => stat.toggleVideo);
   const toggleEdit = toggler(stat=> stat.toggleEdit)
   const { toggleTab } = toggler();
-  const {db, setDB} = database();
-  let {clockWid, searchWid, weatherWid} = db;
+  const globData = database(stat=> stat.db)
+  const {setDB} = database();
+  let {clockWid, searchWid, weatherWid} = globData;
 
   const [data, setdata] = useState({clockWid, searchWid, weatherWid});
 
   useEffect(()=>{
+    console.log(data.weatherWid);
     setDB({data,isGet:false})
   },[data])
 
   return (
-    <div className="thornPrincess z-10 bg-transparent relative h-screen w-screen">
+    <div className="z-10 bg-transparent relative! h-screen w-screen">
 
       {toggleEdit && (
         <div

@@ -6,6 +6,7 @@ import Widgets from "./widgets/mainHandler";
 import MainBookmark from "./controller/mainBookmark";
 import AllAps from "./widgets/Homeaps/homeAll";
 import AppList from "./widgets/Homeaps/apsList";
+import AbsIcons from "./widgets/Homeaps/abIcons";
 export default function NewTab() {
     const data = database(stat=>stat.db);
     const tabsObj = useTabToggle(stat => stat.tabObj);
@@ -17,6 +18,7 @@ export default function NewTab() {
             <Widgets />
             <MainBookmark/>
             <AllAps/>
+            <AbsIcons />
 
             {tabsObj.allApps && <div className="thornPrincess inCommingAnim flex items-center justify-center bg-blue-600/15 backdrop-blur-lg z-20">
                 <div className="underTaker">

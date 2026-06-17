@@ -81,8 +81,8 @@ a{
     justify-content: center;
     position: absolute;
     top: 18%;
-    left: -55px;
-    opacity: 0;
+    left: -52px;
+    opacity: 1;
     transition: all .3s !important;
 
 

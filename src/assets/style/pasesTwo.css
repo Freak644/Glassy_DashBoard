@@ -146,3 +146,21 @@
         }
     }
 }
+
+.setingIcon:hover>i {
+    transform: rotate(90deg);
+}
+
+.cameIn {
+    animation: forwardAnim .5s forwards;
+}
+
+@keyframes forwardAnim {
+    form{
+        right: -15px;
+    }
+    to {
+        right: 0px;
+        opacity: 1;
+    }
+}
