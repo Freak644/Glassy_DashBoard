@@ -18,7 +18,7 @@ export default function NewTab() {
             <Widgets />
             <MainBookmark/>
             <AllAps/>
-            <AbsIcons />
+            <AbsIcons/>
 
             {tabsObj.allApps && <div className="thornPrincess inCommingAnim flex items-center justify-center bg-blue-600/15 backdrop-blur-lg z-20">
                 <div className="underTaker">

@@ -1,10 +1,12 @@
 import { useEffect, useRef, useState } from "react"
+import GreenCoroller from "../../controller/settings/Greetingmgmt";
 
 export default function AbsIcons () {
     const [isTrue, setTrue] = useState(true);
 
     const containerRef = useRef(null);
     const iconRef = useRef(null);
+
 
     useEffect(() => {
         const handleClick = (event) => {
@@ -48,8 +50,8 @@ export default function AbsIcons () {
                                             <i className="bx bx-x"></i>
                                         </div>
                                     </div>
-                                    <div className="h-9/10 my-scroll">
-
+                                    <div className="h-9/10 border relative mt-23 w-full p-3 my-scroll">
+                                        <GreenCoroller />
                                     </div>
                                 </div>
                         </div>

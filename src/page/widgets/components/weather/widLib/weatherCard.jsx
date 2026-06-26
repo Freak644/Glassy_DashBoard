@@ -131,7 +131,7 @@ export default function WeatherCard() {
 
                         <div className="text-right">
                         <p className="font-bold text-xl">
-                            📍 {weatherData.name}
+                            📍 <span className="neonTxt">{weatherData.name}</span>
                         </p>
 
                         <p className="text-sm tracking-wider uppercase text-white/70">

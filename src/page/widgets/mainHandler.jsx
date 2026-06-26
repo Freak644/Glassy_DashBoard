@@ -18,7 +18,7 @@ export default function Widgets() {
   const [data, setdata] = useState({clockWid, searchWid, weatherWid});
 
   useEffect(()=>{
-    console.log(data.weatherWid);
+    
     setDB({data,isGet:false})
   },[data])
 
@@ -49,7 +49,7 @@ export default function Widgets() {
         setdata={setdata}
         toggleEdit={toggleEdit}
     >
-        <ClockMgmt />
+        <ClockMgmt Obj={clockWid} />
     </DraggableWidget>}
 
     {data?.weatherWid?.isVisible && <DraggableWidget

@@ -10,7 +10,7 @@ export const database = create((set, get) => ({
       isBlur:false
     },
     "name":{
-      username:"User"
+      username:"John Deo"
     },
     "searchWid":{
       isVisible:true,
@@ -20,7 +20,7 @@ export const database = create((set, get) => ({
     },
     "clockWid":{
       isVisible:true,
-      anaLog:true,
+      anaLog:false,
       position:{
         x:10, y:200
       }

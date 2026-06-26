@@ -5,7 +5,7 @@ import VideoBg from "./BG/videoBg";
 
 export default function BackGround() {
     const data = database(stat=>stat.db?.background)
-    const [blogUrl,setVideo] = useState("");
+    const [blogUrl,setVideo] = useState(null);
     useEffect(() => {
         if (data.load != "custom") return;
         const request = indexedDB.open("chromeDB", 3222);

@@ -47,9 +47,9 @@ export default  function WeatherAPI({setData}) {
             </p>
             <form action="" className="p-1 flex items-center flex-col" onSubmit={handleKey}>
                 <div className="flex items-center flex-row p-1 w-full gap-2.5 relative">
-                    {result.isResult && result.isTrue && <i className="bx bx-check absolute left-3/5 text-green-500! font-bold text-2xl"></i>}
+                    {result?.isResult && result?.isTrue && <i className="bx bx-check absolute left-3/5 text-green-500! font-bold text-2xl"></i>}
                     <input name="key" type="text" placeholder="API Key" className={`p-1 w-50 pl-2.5 border rounded-lg 
-                        ${(result.isResult && result.isTrue) ? "border-green-600" : (!result.isResult && result.isTrue) ? "border-red-600" : ""}`} /> 
+                        ${(result?.isResult && result?.isTrue) ? "border-green-600" : (!result?.isResult && result?.isTrue) ? "border-red-600" : ""}`} /> 
 
                     <button type="submit" className="bg-green-500 text-white font-bold p-1.5 rounded-lg cursor-pointer hover:bg-green-600">Check</button>
                 </div>
