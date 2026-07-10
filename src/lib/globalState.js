@@ -10,7 +10,8 @@ export const database = create((set, get) => ({
       isBlur:false
     },
     "name":{
-      username:"John Deo"
+      username:"John Deo",
+      isGreeting:true
     },
     "searchWid":{
       isVisible:true,
