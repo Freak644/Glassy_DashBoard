@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react"
-import GreenCoroller from "../../controller/settings/Greetingmgmt";
+import ContainerHolder from "../../controller/settings/ContainerHolder";
 
 export default function AbsIcons () {
     const [isTrue, setTrue] = useState(true);
@@ -50,8 +50,8 @@ export default function AbsIcons () {
                                             <i className="bx bx-x"></i>
                                         </div>
                                     </div>
-                                    <div className="h-9/10 border border-blue-500 relative mt-22 w-full p-3 my-scroll">
-                                        <GreenCoroller />
+                                    <div className="h-9/10 border border-blue-500 relative mt-20 w-full p-3">
+                                        <ContainerHolder />
                                     </div>
                                 </div>
                         </div>

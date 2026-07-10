@@ -1,5 +1,5 @@
-export default function GreenCoroller () {
-
+export default function ContainerStructure ({crntData = {}}) {
+    const {heading, lp, ld, isActive} = crntData;
     return(
         <div className="controllerContainer">
             <p className="p-1 border-b border-gray-400/30 w-full 
@@ -10,26 +10,13 @@ export default function GreenCoroller () {
                     <p>Show Greeting</p>
                     <span>Display Greeting message</span>
                 </div>
-                <div className="rightaSideC">
+                <div className={`rightaSideC ${isActive ? "Active" : ""}`}>
                     <button>
                         <p/>
                     </button>
                 </div>
             </div>
-
-            <div className="controlleBox">
-                <div className="leftaSideC">
-                    <p>Search Container</p>
-                    <span>Container toggler</span>
-                </div>
-                <div className="rightaSideC">
-                    <button>
-                        <p/>
-                    </button>
-                </div>
-            </div>
-
-            
         </div>
+
     )
 }
