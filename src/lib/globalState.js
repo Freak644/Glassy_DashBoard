@@ -11,7 +11,7 @@ export const database = create((set, get) => ({
     },
     "name":{
       username:"John Deo",
-      isGreeting:true
+      isVisible:true
     },
     "searchWid":{
       isVisible:true,

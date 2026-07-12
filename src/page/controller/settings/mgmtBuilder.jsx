@@ -1,7 +1,7 @@
 export default function ContainerStructure ({crntData = {}}) {
-    const {heading, lp, ld, isActive} = crntData;
+    const {name, searchWid} = crntData;
     return(
-        <div className="controllerContainer">
+        <>
             <p className="p-1 border-b border-gray-400/30 w-full 
             text-[11px] font-semibold">👋 Greeting & 📦Search Box</p>
 
@@ -10,13 +10,28 @@ export default function ContainerStructure ({crntData = {}}) {
                     <p>Show Greeting</p>
                     <span>Display Greeting message</span>
                 </div>
-                <div className={`rightaSideC ${isActive ? "Active" : ""}`}>
+                <div className={`rightaSideC ${searchWid.isVisible ? "Active" : ""}`}>
                     <button>
                         <p/>
                     </button>
                 </div>
             </div>
-        </div>
+            <div className="controlleBox">
+                <div className="leftaSideC">
+                    <p>Display Name</p>
+                    <span>Display Greeting message</span>
+                </div>
+                <div className={`rightaSideC ${name.isVisible ? "Active" : ""}`}>
+                    <button>
+                        <p/>
+                    </button>
+                </div>
+            </div>
+
+            <div className="inputDiv">
+                <input type="text" placeholder={name} />
+            </div>
+        </>
 
     )
 }

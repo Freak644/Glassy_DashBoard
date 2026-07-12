@@ -50,7 +50,7 @@ export default function AbsIcons () {
                                             <i className="bx bx-x"></i>
                                         </div>
                                     </div>
-                                    <div className="h-9/10 border border-blue-500 relative mt-20 w-full p-3">
+                                    <div className="h-9/10 border border-blue-500 relative mt-20 w-full p-3 my-scroll">
                                         <ContainerHolder />
                                     </div>
                                 </div>
