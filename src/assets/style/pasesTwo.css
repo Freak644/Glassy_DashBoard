@@ -210,7 +210,7 @@
     justify-content: center;
     width: 100%;
     height: 40px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.423) ;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.389) ;
     border-radius: 10px;
 
     .leftaSideC {
@@ -267,4 +267,36 @@
             background: rgb(247, 247, 247);
         }
     }
+}
+
+.inputDiv {
+    display: flex;
+    align-items: center;
+    height: 35px;
+    width: 100%;
+    position: relative;
+
+    input {
+        all: unset;
+        border: 2px solid rgba(128, 128, 128, 0.479);
+        border-radius: 10px;
+        width: 100%;
+        padding-left: 10px;
+        padding-right: 10px;
+        height: 30px;
+    }
+
+    button {
+        position: absolute;
+        padding: 6px;
+        font-size: 10px;
+        background-color: #43b13dd4;
+        color: white;
+        border-radius: 8px;
+        right: 0px;
+    }
+}
+
+.inputDiv input:focus {
+    border-color: blue;
 }

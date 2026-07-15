@@ -34,7 +34,7 @@ export default function Widgets() {
         </div>
       )}
 
-     {data?.searchWid.isVisible && <DraggableWidget 
+     {searchWid.isVisible && <DraggableWidget 
         id="searchWid"
         position={data.searchWid.position}
         setdata={setdata}
@@ -43,7 +43,7 @@ export default function Widgets() {
         <SearchBar />
      </DraggableWidget>}
 
-     {data?.clockWid.isVisible && <DraggableWidget
+     {clockWid.isVisible && <DraggableWidget
         id="clockWid"
         position={data.clockWid.position}
         setdata={setdata}
@@ -52,7 +52,7 @@ export default function Widgets() {
         <ClockMgmt Obj={clockWid} />
     </DraggableWidget>}
 
-    {data?.weatherWid?.isVisible && <DraggableWidget
+    {weatherWid?.isVisible && <DraggableWidget
         id="weatherWid"
         position={data.weatherWid.position}
         setdata={setdata}
