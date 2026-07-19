@@ -39,18 +39,18 @@ export default function AbsIcons () {
             </div>
 
             { isTrue && 
-                    <div className="thornPrincess z-20 bg-gray-700/30">
-                        <div ref={containerRef} className={`setingSlider cameIn absolute backdrop-blur-lg bg-purple-700/10 overflow-hidden rounded-lg h-screen w-1/4
-                            shadow-2xl shadow-black opacity-20 -right-25`}>
+                    <div className="thornPrincess z-20 bg-black/60">
+                        <div ref={containerRef} className={`setingSlider cameIn absolute backdrop-blur-lg bg-black/30 overflow-hidden rounded-lg h-screen w-1/4
+                            shadow-2xl shadow-white/80 opacity-20 -right-25`}>
                                 <div className="underTaker">
-                                    <div className="uperHeader bg-gray-500/20 fixed top-0 h-1/10 border-b w-full border-gray-600/40 
+                                    <div className="sticky top-0 h-1/10 border-b w-full border-gray-600/40 
                                     flex items-center justify-between p-4">
                                         <p className="font-bold text-2xl">⚙️ Settings</p>
-                                        <div onClick={()=> setTrue(false)} className="h-10 rounded-full bg-gray-500/40 hover:rotate-90 hover:bg-gray-700/40 hover:scale-90 border border-white/50 duration-200 cursor-pointer w-10 flex items-center justify-center">
+                                        <div onClick={()=> setTrue(false)} className="h-10 rounded-full bg-gray-500/40 hover:rotate-90 hover:bg-red-500/40 hover:scale-90 border border-white/50 duration-200 cursor-pointer w-10 flex items-center justify-center">
                                             <i className="bx bx-x"></i>
                                         </div>
                                     </div>
-                                    <div className="h-9/10 border border-blue-500 relative mt-20 w-full p-3 my-scroll">
+                                    <div className="h-9/10 border border-blue-500 relative  w-full p-3 my-scroll flex gap-2.5 flex-col">
                                         <ContainerHolder />
                                     </div>
                                 </div>

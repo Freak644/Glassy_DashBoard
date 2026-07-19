@@ -50,13 +50,15 @@ export default function ContainerStructure ({crntData = {}}) {
     },[])
     return(
         <>
-            <p className="p-1 border-b border-gray-400/30 w-full 
-            text-[11px] font-semibold">👋 Greeting & 📦Search Box</p>
+            <p className="headingP">👋 Greeting & Search Box</p>
 
             <div className="controlleBox">
                 <div className="leftaSideC">
-                    <p>Show search</p>
-                    <span>Display Search Container</span>
+                    <div className="iconCon">🔍</div>
+                    <div className="textHolder">
+                        <p>Show search</p>
+                        <span>Display Search Container</span>
+                    </div>
                 </div>
                 <div className={`rightaSideC ${searchWid.isVisible ? "Active" : ""}`}>
                     <button onClick={()=>ToggleButton("searchWid")}>
@@ -66,8 +68,11 @@ export default function ContainerStructure ({crntData = {}}) {
             </div>
             <div className="controlleBox">
                 <div className="leftaSideC">
-                    <p>Display Name</p>
-                    <span>Display Name</span>
+                    <div className="iconCon">👤</div>
+                    <div className="textHolder">
+                        <p>Display Name</p>
+                        <span>Display Name</span>
+                    </div>
                 </div>
                 <div className={`rightaSideC ${name.isVisible ? "Active" : ""}`}>
                     <button onClick={()=>ToggleButton("name")}>

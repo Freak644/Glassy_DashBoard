@@ -1,8 +1,10 @@
 export default function ClockCotroll () {
 
     return(
-        <div className="underTaker">
-            
-        </div>
+        <>
+            <p className="headingP">
+                🕝 Clock & Time
+            </p>
+        </>
     )
 }

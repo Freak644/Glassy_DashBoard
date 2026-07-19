@@ -172,8 +172,11 @@
     align-items: center;
     flex-direction: column;
     gap: 8px;
-    border: 1px solid rgba(73, 182, 188, 0.31);
+    border: 1px solid rgba(0, 212, 223, 0.31);
     border-radius: 10px;
+    background: rgba(33, 4, 53, 0.27);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
 }
 
 .neonTxt {
@@ -209,25 +212,45 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 40px;
+    height: 45px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.389) ;
     border-radius: 10px;
-
     .leftaSideC {
         display: flex;
         align-items: start;
-        flex-direction: column;
+        flex-direction: row;
         width: 70%;
         height: 100%;
+        gap: 5px;
+        .iconCon{
+            width: 30px;
+            height: 30PX;
+            border-radius: 10PX;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(157, 58, 0, 0.088);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
 
-        p {
-            font-size: 12px;
-            font-weight: 400;
+        .textHolder{
+            display: flex;
+            align-items: start;
+            height: 100%;
+            width: 200px;
+
+            flex-direction: column;
+            p {
+                font-size: 12px;
+                font-weight: 400;
+            }
+            span {
+                font-size: 10px;
+                color: rgba(255, 255, 255, 0.5)
+            }
         }
-        span {
-            font-size: 10px;
-            color: rgba(255, 255, 255, 0.5)
-        }
+
     }
 
     .rightaSideC {
@@ -256,11 +279,15 @@
             }
         }
     }
+
+    &:hover {
+        background: linear-gradient(90deg, transparent ,rgba(0,20,250,0.2), rgba(10,20, 250, .3));
+    }
 }
 
 .rightaSideC.Active {
     button {
-        background-color: rgba(34, 255, 0, 0.825);
+        background-color: rgb(29, 190, 0);
 
         p {
             transform: translateX(20px);
@@ -299,4 +326,11 @@
 
 .inputDiv input:focus {
     border-color: blue;
+}
+.headingP {
+    padding: 4px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.34);
+    width: 100%;
+    font-size: 11px;
+    font-weight: 500;
 }

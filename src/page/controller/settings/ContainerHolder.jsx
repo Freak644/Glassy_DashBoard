@@ -1,4 +1,5 @@
 import { database } from "../../../lib/globalState";
+import ClockCotroll from "./clockControl";
 import ContainerStructure from "./mgmtBuilder";
 
 export default function ContainerHolder () {
@@ -9,8 +10,13 @@ export default function ContainerHolder () {
     }
 
     return(
-        <div className="controllerContainer">
-            <ContainerStructure crntData={{name,searchWid}}/>
-        </div>
+        <>
+            <div className="controllerContainer">
+                <ContainerStructure crntData={{name,searchWid}}/>
+            </div>
+            <div className="controllerContainer">
+                <ClockCotroll/>
+            </div>
+        </>
     )
 }
