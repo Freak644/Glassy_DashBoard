@@ -215,6 +215,7 @@
     height: 45px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.389) ;
     border-radius: 10px;
+    cursor: grabbing;
     .leftaSideC {
         display: flex;
         align-items: start;

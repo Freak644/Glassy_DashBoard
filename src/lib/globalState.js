@@ -7,7 +7,8 @@ export const database = create((set, get) => ({
     "background":{
       load:"default",
       type:"image",
-      isBlur:false
+      isBlur:false,
+      grdColor:"default"
     },
     "name":{
       username:"John Deo",

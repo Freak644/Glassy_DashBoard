@@ -5,17 +5,17 @@ import { useEffect, useRef, useState } from "react";
 export default function ContainerStructure ({crntData = {}}) {
     let {setDB} = database();
     const {name, searchWid} = crntData;
-    const [builDerLocalData, setIntoLocalData] = useState(crntData)
+    const [builDerLocalData, setIntoLocalData] = useState(crntData);
 
     const inputRef = useRef(null);
     useEffect(()=>{
-        console.log(builDerLocalData);
+        // console.log(builDerLocalData);
         setDB({data:builDerLocalData,isGet:false})
     },[builDerLocalData]);
 
     const ToggleButton =  (key) => {
         if (!key || !key.trim()) return toast.error("Something went wrong");
-        console.log(builDerLocalData,key);
+        // console.log(builDerLocalData,key);
         setIntoLocalData(prev=>({
             ...prev,
             [key]:{

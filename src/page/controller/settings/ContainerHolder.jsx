@@ -15,7 +15,7 @@ export default function ContainerHolder () {
                 <ContainerStructure crntData={{name,searchWid}}/>
             </div>
             <div className="controllerContainer">
-                <ClockCotroll/>
+                <ClockCotroll crntData={{clockWid}}/>
             </div>
         </>
     )

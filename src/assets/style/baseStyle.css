@@ -1,12 +1,17 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap'); */
 :root{
-    --bg-color:rgba(11, 6, 36, 0.1);
+    --bg-color:rgba(0, 0, 0, 0.358);
     --text-color:white;
+}
+
+[data-theme='dark-white'] {
+    --bg-color: rgba(55, 0, 118, 0.403);
+    --text-color: black;
 }
 
 body{
    margin: 0px; padding: 0px;
-   background-color: black;
+   background-color: var(--bg-color);
    filter: contrast(1.15) saturate(1.15) brightness(1.05);
 }
 
@@ -62,9 +67,9 @@ a{
 
 .blurBg{
     background: var(--bg-color);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(66, 0, 110, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 145, 208, 0.3);
     box-shadow: 0 8px 32px rgba(0,0,0,0.2);
     border-radius: 16px;
 }
@@ -208,7 +213,7 @@ a{
     left: 80px;
     top: 10px;
     position: fixed;
-    background-color: rgba(15, 2, 19, 0.2);
+    background-color: var(--bg-color);
 }
 .ned,.cont{
     position: absolute;
