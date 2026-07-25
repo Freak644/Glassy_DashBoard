@@ -49,7 +49,7 @@ export default function ClockCotroll ({crntData}) {
                         <span>Switch to digital clock display</span>
                     </div>
                 </div>
-                <div className={`rightaSideC ${clockWid.anaLog ? "Active" : ""}`}>
+                <div className={`rightaSideC ${clockWid.anaLog ? "" : "Active"}`}>
                      <button onClick={()=>{
                         setIntoLocalData(prev=>({
                             ...prev,

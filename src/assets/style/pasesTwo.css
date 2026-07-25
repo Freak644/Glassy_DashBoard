@@ -347,12 +347,17 @@
         height: 30px;
     }
 
+    input::placeholder {
+        color:gray ;
+    }
+
     button {
         height: 90%;
         width: 30%;
         background-color: blue;
         font-weight: bold;
         border-radius: 10px;
+        cursor: pointer;
     }
 }
 .headingP {

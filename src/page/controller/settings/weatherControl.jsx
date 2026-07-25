@@ -3,33 +3,47 @@ import { database } from "../../../lib/globalState";
 
 export default function WeatherColtroller ({crntData, setData}) {
     let {weatherWid} = crntData;
-
+    
     const [builDerLocalData, setIntoLocalData] = useState(crntData);
-    const inputRef = useRef(null);
+    const cityInputRef = useRef(null);
+    const keyInputRef = useRef(null);
 
-    const changeName =  (inp) => {
+    const upDatebase =  (inp) => {
             let value = inp.value;
+            let key = inp.name;
+            console.log(inp);
             if (!value || !value.trim()) return;
-            
+            console.log({[key]:value});
             setIntoLocalData(prev=>({
                 ...prev,
-                ["name"]:{
-                    ...prev["name"],
-                    username:value
+                ["weatherWid"]:{
+                    ...prev["weatherWid"],
+                    [key]:value
                 }
             }))
         }
     
         useEffect(()=>{
-            if (!inputRef || inputRef=== null) return;
-            let inp = inputRef.current;
+            if (!cityInputRef || cityInputRef=== null || !keyInputRef || !keyInputRef === null) return;
+            let cityInp = cityInputRef.current;
+            let keyInp = keyInputRef.current
             
-            inp.addEventListener("keydown", (e) => {
+            cityInp.addEventListener("keydown", (e) => {
                 if (e.key === "Enter") {
-                    changeName(e.target);
+                    upDatebase(e.target);
+                }
+            });
+
+            keyInp.addEventListener("keydown", (e) => {
+                if (e.key === "Enter") {
+                    upDatebase(e.target);
                 }
             });
         },[]);
+
+        useEffect(()=>{
+            setData({data:builDerLocalData, isGet:false});
+        },[builDerLocalData]);
     return(
         <>
             <p className="headingP">🌤️ Weather</p>
@@ -43,8 +57,16 @@ export default function WeatherColtroller ({crntData, setData}) {
                     </div>
                 </div>
 
-                <div className="rightaSideC">
-                    <button>
+                <div className={`rightaSideC ${weatherWid.isVisible ? "Active" : ""}`}>
+                    <button onClick={()=>{
+                        setIntoLocalData(prev=>({
+                            ...prev,
+                            ["weatherWid"]:{
+                                ...prev["weatherWid"],
+                                isVisible: !prev["weatherWid"].isVisible
+                            }
+                        }))
+                    }}>
                         <p></p>
                     </button>
                 </div>
@@ -62,8 +84,11 @@ export default function WeatherColtroller ({crntData, setData}) {
                 </div>
             </div>
             <div className="inputDivBtn">
-                <input ref={inputRef} type="text" />
-                <button>Save</button>
+                <input ref={keyInputRef} name="apiKey" type="text" placeholder={weatherWid.apiKey.length>0 && "**********"} />
+                <button onClick={(evnt)=>{
+                    let input = evnt.target.previousElementSibling;
+                    upDatebase(input);
+                }}>Save</button>
             </div>
 
             <div className="controlleBox justify-start! border-none!">
@@ -77,8 +102,11 @@ export default function WeatherColtroller ({crntData, setData}) {
 
             </div>
             <div className="inputDivBtn">
-                <input ref={inputRef} type="text" />
-                <button>Save</button>
+                <input ref={cityInputRef} name="city" placeholder={weatherWid.city} type="text" />
+                <button onClick={(evnt)=>{
+                    let input = evnt.target.previousElementSibling;
+                    upDatebase(input);
+                }}>Save</button>
             </div>
         </>
     )

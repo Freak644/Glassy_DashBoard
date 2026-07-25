@@ -19,7 +19,7 @@ export default function ContainerHolder () {
                 <ClockCotroll crntData={{clockWid}}/>
             </div>
             <div className="controllerContainer">
-                <WeatherColtroller crntData={weatherWid} setData={setDB} />
+                <WeatherColtroller crntData={{weatherWid}} setData={setDB} />
             </div>
         </>
     )
