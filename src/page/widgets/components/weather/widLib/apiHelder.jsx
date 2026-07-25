@@ -43,7 +43,7 @@ export default  function WeatherAPI({setData}) {
             <p className="font-bold text-2xl">Please Create an API key</p>
             <p className="flex items-center justify-center p-1">
                 <i className="bx bxl-youtube text-3xl text-red-600!"></i>
-                <a href="https://youtu.be/FWuRLS_wmWY">Click Here</a>
+                <a href="https://www.youtube.com/watch?v=FWuRLS_wmWY">Click Here</a>
             </p>
             <form action="" className="p-1 flex items-center flex-col" onSubmit={handleKey}>
                 <div className="flex items-center flex-row p-1 w-full gap-2.5 relative">

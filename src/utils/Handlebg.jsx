@@ -15,6 +15,7 @@ export default function HandleBGUpload() {
 
     const containerRef = useRef(null);
     let {toggleTab} = toggler();
+    const tVData = toggler(stat=>stat.toggleVideo);
 
     let {setDB} = database();
 
@@ -80,8 +81,8 @@ export default function HandleBGUpload() {
         const tab = containerRef.current;
 
         const handleClick = (event) => {
-            let traget = event.target.id;
-            if (tab && !tab.contains(event.target) && traget != "null" && traget !== "btn") {
+            let traget = event.target.value;
+            if (tab && !tab.contains(event.target) && traget != "null" && traget != 2) {
                     toggleTab({ toggleVideo: false });
                     URL.revokeObjectURL(background.objUrl);
                     setBackground({
@@ -97,7 +98,7 @@ export default function HandleBGUpload() {
         return () => {
             document.removeEventListener("click", handleClick);
         };
-    }, []);
+    }, [tVData]);
 
     const saveTheVideo = () => {
 

@@ -7,6 +7,7 @@ export const toggler = create((set)=> ({
 
     toggleTab: (obj = {}) =>
         set((state) => {
+            console.log(obj);
             if (!obj || Object.keys(obj).length === 0) return state;
             let key = Object.keys(obj)[0];
             let  value = obj[key];

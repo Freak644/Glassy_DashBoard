@@ -328,6 +328,33 @@
 .inputDiv input:focus {
     border-color: blue;
 }
+
+.inputDivBtn {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    height: 40px;
+    width: 100%;
+    gap: 5px;
+
+    input {
+        all: unset;
+        border: 2px solid rgba(128, 128, 128, 0.479);
+        border-radius: 10px;
+        width: 70%;
+        padding-left: 10px;
+        padding-right: 10px;
+        height: 30px;
+    }
+
+    button {
+        height: 90%;
+        width: 30%;
+        background-color: blue;
+        font-weight: bold;
+        border-radius: 10px;
+    }
+}
 .headingP {
     padding: 4px;
     border-bottom: 1px solid rgba(128, 128, 128, 0.34);

@@ -67,5 +67,5 @@ export default function Widgets() {
 }
 
 // function getFavicon(url) {
-//   return `https://www.google.com/s2/favicons?sz=64&domain=${url}`;
+//   return `https://www.google.com/s2/favicons?domain=${url}`;
 // }

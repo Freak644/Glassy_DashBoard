@@ -22,7 +22,7 @@ export const database = create((set, get) => ({
     },
     "clockWid":{
       isVisible:true,
-      anaLog:false,
+      anaLog:true,
       position:{
         x:10, y:200
       }
@@ -40,22 +40,22 @@ export const database = create((set, get) => ({
       Social: [
         {
           url: "https://www.facebook.com/",
-          icon: "https://www.google.com/s2/favicons?sz=64&domain=facebook.com",
+          icon: "https://www.google.com/s2/favicons?domain=facebook.com",
           name: "Facebook"
         },
         {
           url: "https://web.whatsapp.com/",
-          icon: "https://www.google.com/s2/favicons?sz=64&domain=whatsapp.com",
+          icon: "https://www.google.com/s2/favicons?domain=whatsapp.com",
           name: "WhatsApp"
         },
         {
           url: "https://www.linkedin.com/",
-          icon: "https://www.google.com/s2/favicons?sz=64&domain=linkedin.com",
+          icon: "https://www.google.com/s2/favicons?domain=linkedin.com",
           name: "LinkedIn"
         },
         {
           url: "https://twitter.com/",
-          icon: "https://www.google.com/s2/favicons?sz=64&domain=twitter.com",
+          icon: "https://www.google.com/s2/favicons?domain=twitter.com",
           name: "Twitter"
         }
       ],
@@ -63,22 +63,22 @@ export const database = create((set, get) => ({
       Dev: [
         {
           url: "https://github.com/",
-          icon: "https://www.google.com/s2/favicons?sz=64&domain=github.com",
+          icon: "https://www.google.com/s2/favicons?domain=github.com",
           name: "GitHub"
         },
         {
           url: "https://stackoverflow.com/",
-          icon: "https://www.google.com/s2/favicons?sz=64&domain=stackoverflow.com",
+          icon: "https://www.google.com/s2/favicons?domain=stackoverflow.com",
           name: "StackOverflow"
         },
         {
           url: "https://www.codecove.com/",
-          icon: "https://www.google.com/s2/favicons?sz=64&domain=codecove.com",
+          icon: "https://www.google.com/s2/favicons?domain=codecove.com",
           name: "CodeCove"
         },
         {
           url: "https://codepen.io/",
-          icon: "https://www.google.com/s2/favicons?sz=64&domain=codepen.io",
+          icon: "https://www.google.com/s2/favicons?domain=codepen.io",
           name: "CodePen"
         }
       ],
@@ -86,22 +86,22 @@ export const database = create((set, get) => ({
       Learning: [
         {
           url: "https://www.youtube.com/",
-          icon: "https://www.google.com/s2/favicons?sz=64&domain=youtube.com",
+          icon: "https://www.google.com/s2/favicons?domain=youtube.com",
           name: "YouTube"
         },
         {
           url: "https://monkeytype.com/",
-          icon: "https://www.google.com/s2/favicons?sz=64&domain=monkeytype.com",
+          icon: "https://www.google.com/s2/favicons?domain=monkeytype.com",
           name: "Monkeytype"
         },
         {
           url: "https://www.geeksforgeeks.org/",
-          icon: "https://www.google.com/s2/favicons?sz=64&domain=geeksforgeeks.org",
+          icon: "https://www.google.com/s2/favicons?domain=geeksforgeeks.org",
           name: "GeeksforGeeks"
         },
         {
           url: "https://www.freecodecamp.org/",
-          icon: "https://www.google.com/s2/favicons?sz=64&domain=freecodecamp.org",
+          icon: "https://www.google.com/s2/favicons?domain=freecodecamp.org",
           name: "freeCodeCamp"
         }
       ],
@@ -110,22 +110,22 @@ export const database = create((set, get) => ({
       Tools: [
         {
           url: "https://chat.openai.com/",
-          icon: "https://www.google.com/s2/favicons?sz=64&domain=openai.com",
+          icon: "https://www.google.com/s2/favicons?domain=openai.com",
           name: "ChatGPT"
         },
         {
           url: "https://mail.google.com/",
-          icon: "https://www.google.com/s2/favicons?sz=64&domain=gmail.com",
+          icon: "https://www.google.com/s2/favicons?domain=gmail.com",
           name: "Gmail"
         },
         {
           url: "https://drive.google.com/",
-          icon: "https://www.google.com/s2/favicons?sz=64&domain=drive.google.com",
+          icon: "https://www.google.com/s2/favicons?domain=drive.google.com",
           name: "Google Drive"
         },
         {
           url: "https://calendar.google.com/",
-          icon: "https://www.google.com/s2/favicons?sz=64&domain=calendar.google.com",
+          icon: "https://www.google.com/s2/favicons?domain=calendar.google.com",
           name: "Calendar"
         }
       ]
@@ -141,12 +141,12 @@ export const database = create((set, get) => ({
         },
         {
           url: "https://www.youtube.com/",
-          icon: "https://www.google.com/s2/favicons?sz=64&domain=youtube.com",
+          icon: "https://www.google.com/s2/favicons?domain=youtube.com",
           name: "YouTube"
         },
         {
           url: "https://monkeytype.com/",
-          icon: "https://www.google.com/s2/favicons?sz=64&domain=monkeytype.com",
+          icon: "https://www.google.com/s2/favicons?domain=monkeytype.com",
           name: "Monkeytype"
         }
       ],
@@ -199,201 +199,202 @@ export const Apps = create((set, get) => ({
   // AI
         {
           url: "https://chatgpt.com/",
-          icon: "https://www.google.com/s2/favicons?sz=64&domain=chatgpt.com",
+          icon: "https://www.google.com/s2/favicons?domain=chatgpt.com",
           name: "ChatGPT"
         },
         {
           url: "https://gemini.google.com/",
-          icon: "https://www.google.com/s2/favicons?sz=64&domain=gemini.google.com",
+          icon: "https://www.google.com/s2/favicons?domain=gemini.google.com",
           name: "Gemini"
         },
         {
           url: "https://claude.ai/",
-          icon: "https://www.google.com/s2/favicons?sz=64&domain=claude.ai",
+          icon: "https://www.google.com/s2/favicons?domain=claude.ai",
           name: "Claude"
         },
 
         // Google
         {
           url: "https://mail.google.com/",
-          icon: "https://www.google.com/s2/favicons?sz=64&domain=gmail.com",
+          icon: "https://www.google.com/s2/favicons?domain=gmail.com",
           name: "Gmail"
         },
         {
           url: "https://drive.google.com/",
-          icon: "https://www.google.com/s2/favicons?sz=64&domain=drive.google.com",
+          icon: "https://www.google.com/s2/favicons?domain=drive.google.com",
           name: "Drive"
         },
         {
           url: "https://docs.google.com/",
-          icon: "https://www.google.com/s2/favicons?sz=64&domain=docs.google.com",
+          icon: "https://www.google.com/s2/favicons?domain=docs.google.com",
           name: "Docs"
         },
         {
           url: "https://sheets.google.com/",
-          icon: "https://www.google.com/s2/favicons?sz=64&domain=sheets.google.com",
+          icon: "https://www.google.com/s2/favicons?domain=sheets.google.com",
           name: "Sheets"
         },
         {
           url: "https://slides.google.com/",
-          icon: "https://www.google.com/s2/favicons?sz=64&domain=slides.google.com",
+          icon: "https://www.google.com/s2/favicons?domain=slides.google.com",
           name: "Slides"
         },
         {
           url: "https://calendar.google.com/",
-          icon: "https://www.google.com/s2/favicons?sz=64&domain=calendar.google.com",
+          icon: "https://www.google.com/s2/favicons?domain=calendar.google.com",
           name: "Calendar"
         },
         {
           url: "https://photos.google.com/",
-          icon: "https://www.google.com/s2/favicons?sz=64&domain=photos.google.com",
+          icon: "https://www.google.com/s2/favicons?domain=photos.google.com",
           name: "Photos"
         },
         {
           url: "https://meet.google.com/",
-          icon: "https://www.google.com/s2/favicons?sz=64&domain=meet.google.com",
+          icon: "https://www.google.com/s2/favicons?domain=meet.google.com",
           name: "Meet"
         },
         {
           url: "https://news.google.com/",
-          icon: "https://www.google.com/s2/favicons?sz=64&domain=news.google.com",
+          icon: "https://www.google.com/s2/favicons?domain=news.google.com",
           name: "News"
         },
         {
           url: "https://maps.google.com/",
-          icon: "https://www.google.com/s2/favicons?sz=64&domain=maps.google.com",
+          icon: "https://www.google.com/s2/favicons?domain=maps.google.com",
           name: "Maps"
         },
         {
           url: "https://keep.google.com/",
-          icon: "https://www.google.com/s2/favicons?sz=64&domain=keep.google.com",
+          icon: "https://www.google.com/s2/favicons?domain=keep.google.com",
           name: "Keep"
         },
         {
           url: "https://contacts.google.com/",
-          icon: "https://www.google.com/s2/favicons?sz=64&domain=contacts.google.com",
+          icon: "https://www.google.com/s2/favicons?domain=contacts.google.com",
           name: "Contacts"
         },
         {
           url: "https://translate.google.com/",
-          icon: "https://www.google.com/s2/favicons?sz=64&domain=translate.google.com",
+          icon: "https://www.google.com/s2/favicons?domain=translate.google.com",
           name: "Translate"
         },
         {
           url: "https://www.youtube.com/",
-          icon: "https://www.google.com/s2/favicons?sz=64&domain=youtube.com",
+          icon: "https://www.google.com/s2/favicons?domain=youtube.com",
           name: "YouTube"
         },
 
         // Developer
         {
           url: "https://github.com/",
-          icon: "https://www.google.com/s2/favicons?sz=64&domain=github.com",
+          icon: "https://www.google.com/s2/favicons?domain=github.com",
           name: "GitHub"
         },
         {
           url: "https://gitlab.com/",
-          icon: "https://www.google.com/s2/favicons?sz=64&domain=gitlab.com",
+          icon: "https://www.google.com/s2/favicons?domain=gitlab.com",
           name: "GitLab"
         },
         {
           url: "https://stackoverflow.com/",
-          icon: "https://www.google.com/s2/favicons?sz=64&domain=stackoverflow.com",
+          icon: "https://www.google.com/s2/favicons?domain=stackoverflow.com",
           name: "Stack Overflow"
         },
         {
           url: "https://codepen.io/",
-          icon: "https://www.google.com/s2/favicons?sz=64&domain=codepen.io",
+          icon: "https://www.google.com/s2/favicons?domain=codepen.io",
           name: "CodePen"
         },
         {
           url: "https://replit.com/",
-          icon: "https://www.google.com/s2/favicons?sz=64&domain=replit.com",
+          icon: "https://www.google.com/s2/favicons?domain=replit.com",
           name: "Replit"
         },
         {
           url: "https://vercel.com/",
-          icon: "https://www.google.com/s2/favicons?sz=64&domain=vercel.com",
+          icon: "https://www.google.com/s2/favicons?domain=vercel.com",
           name: "Vercel"
         },
 
         // Productivity
         {
           url: "https://www.notion.so/",
-          icon: "https://www.google.com/s2/favicons?sz=64&domain=notion.so",
+          icon: "https://www.google.com/s2/favicons?domain=notion.so",
           name: "Notion"
         },
         {
           url: "https://trello.com/",
-          icon: "https://www.google.com/s2/favicons?sz=64&domain=trello.com",
+          icon: "https://www.google.com/s2/favicons?domain=trello.com",
           name: "Trello"
         },
         {
           url: "https://slack.com/",
-          icon: "https://www.google.com/s2/favicons?sz=64&domain=slack.com",
+          icon: "https://www.google.com/s2/favicons?domain=slack.com",
           name: "Slack"
         },
         {
           url: "https://discord.com/",
-          icon: "https://www.google.com/s2/favicons?sz=64&domain=discord.com",
+          icon: "https://www.google.com/s2/favicons?domain=discord.com",
           name: "Discord"
         },
 
         // Learning
         {
           url: "https://www.w3schools.com/",
-          icon: "https://www.google.com/s2/favicons?sz=64&domain=w3schools.com",
+          icon: "https://www.google.com/s2/favicons?domain=w3schools.com",
           name: "W3Schools"
         },
         {
           url: "https://developer.mozilla.org/",
-          icon: "https://www.google.com/s2/favicons?sz=64&domain=developer.mozilla.org",
+          icon: "https://www.google.com/s2/favicons?domain=developer.mozilla.org",
           name: "MDN"
         },
         {
           url: "https://www.freecodecamp.org/",
-          icon: "https://www.google.com/s2/favicons?sz=64&domain=freecodecamp.org",
+          icon: "https://www.google.com/s2/favicons?domain=freecodecamp.org",
+          
           name: "freeCodeCamp"
         },
 
         // Typing
         {
           url: "https://monkeytype.com/",
-          icon: "https://www.google.com/s2/favicons?sz=64&domain=monkeytype.com",
+          icon: "https://www.google.com/s2/favicons?domain=monkeytype.com",
           name: "Monkeytype"
         },
         {
           url: "https://play.typeracer.com/",
-          icon: "https://www.google.com/s2/favicons?sz=64&domain=typeracer.com",
+          icon: "https://www.google.com/s2/favicons?domain=typeracer.com",
           name: "TypeRacer"
         },
 
         // Social
         {
           url: "https://reddit.com/",
-          icon: "https://www.google.com/s2/favicons?sz=64&domain=reddit.com",
+          icon: "https://www.google.com/s2/favicons?domain=reddit.com",
           name: "Reddit"
         },
         {
           url: "https://x.com/",
-          icon: "https://www.google.com/s2/favicons?sz=64&domain=x.com",
+          icon: "https://www.google.com/s2/favicons?domain=x.com",
           name: "X"
         },
         {
           url: "https://linkedin.com/",
-          icon: "https://www.google.com/s2/favicons?sz=64&domain=linkedin.com",
+          icon: "https://www.google.com/s2/favicons?domain=linkedin.com",
           name: "LinkedIn"
         },
 
         // Entertainment
         {
           url: "https://netflix.com/",
-          icon: "https://www.google.com/s2/favicons?sz=64&domain=netflix.com",
+          icon: "https://www.google.com/s2/favicons?domain=netflix.com",
           name: "Netflix"
         },
         {
           url: "https://spotify.com/",
-          icon: "https://www.google.com/s2/favicons?sz=64&domain=spotify.com",
+          icon: "https://www.google.com/s2/favicons?domain=spotify.com",
           name: "Spotify"
         },
         {
