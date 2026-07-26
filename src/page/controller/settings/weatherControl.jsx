@@ -93,7 +93,7 @@ export default function WeatherColtroller ({crntData, setData}) {
 
             <div className="controlleBox justify-start! border-none!">
                 <div className="leftaSideC">
-                    <div className="iconCon">🗝️</div>
+                    <div className="iconCon">📍</div>
                     <div className="textHolder">
                         <p>Enter your city name</p>
                         <span>Fetch Weather for your city</span>

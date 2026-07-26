@@ -172,7 +172,7 @@
     align-items: center;
     flex-direction: column;
     gap: 8px;
-    border: 1px solid rgba(0, 212, 223, 0.31);
+    border: 1px solid rgba(69, 100, 102, 0.31);
     border-radius: 10px;
     background: rgba(33, 4, 53, 0.27);
     backdrop-filter: blur(15px);
@@ -182,10 +182,10 @@
 .neonTxt {
     background: linear-gradient(
         90deg,
-        #851aff,
-        #ff018d,
+        #851affcf,
+        #ff018dd5,
         #7706d4,
-        #e7ee22,
+        #e7ee22bc,
         #8b5cf6
     );
 
@@ -215,7 +215,7 @@
     height: 45px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.389) ;
     border-radius: 10px;
-    cursor: grabbing;
+    
     .leftaSideC {
         display: flex;
         align-items: start;
@@ -366,4 +366,12 @@
     width: 100%;
     font-size: 11px;
     font-weight: 500;
+}
+
+.controlleBoxA {
+    height: 90px;
+    width: 100%;
+    background: linear-gradient(136deg, rgba(132, 132, 132, 0.21), rgba(33, 20, 37, 0.259), rgba(34, 3, 41, 0.368));
+    border-radius: 10px;
+    border: 1px solid rgba(48, 14, 79, 0.207);
 }
