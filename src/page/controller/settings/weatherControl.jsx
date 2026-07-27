@@ -11,7 +11,7 @@ export default function WeatherColtroller ({crntData, setData}) {
     const upDatebase =  (inp) => {
             let value = inp.value;
             let key = inp.name;
-            console.log(inp);
+            // console.log(inp);
             if (!value || !value.trim()) return;
             console.log({[key]:value});
             setIntoLocalData(prev=>({
@@ -84,7 +84,7 @@ export default function WeatherColtroller ({crntData, setData}) {
                 </div>
             </div>
             <div className="inputDivBtn">
-                <input ref={keyInputRef} name="apiKey" type="text" placeholder={weatherWid.apiKey.length>0 && "**********"} />
+                <input ref={keyInputRef} name="apiKey" type="text" placeholder={weatherWid.apiKey.length>0 ? "**********" : ""} />
                 <button onClick={(evnt)=>{
                     let input = evnt.target.previousElementSibling;
                     upDatebase(input);

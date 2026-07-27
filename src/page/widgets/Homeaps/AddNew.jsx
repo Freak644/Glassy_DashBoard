@@ -18,7 +18,7 @@ function isValidUrl(url) {
 
 const getWebsiteName = (url) => {
     const hostname = new URL(url).hostname.replace(/^www\./, "")
-      .split(".")[0];;
+      .split(".")[0];
 
       return hostname.charAt(0).toUpperCase() + hostname.slice(1)
       
