@@ -1,10 +1,10 @@
-import { input, pre } from "framer-motion/client";
-import { useState } from "react"
+import { data, input, pre } from "framer-motion/client";
+import { useEffect, useState } from "react"
 import { toast } from "react-toastify";
 
 export default function FranApp ({crntList, setData}) {
-    
-    const [builDerLocalData, setIntoLocalData] = useState(crntList);
+    let {quickAcSetting, quickAcces} = crntList;
+    const [builDerLocalData, setIntoLocalData] = useState(quickAcces);
 
     const getWebsiteName = (url) => {
         const hostname = new URL(url).hostname.replace(/^www\./, "")
@@ -60,7 +60,16 @@ export default function FranApp ({crntList, setData}) {
         });
 
         
-    }
+    }   
+
+    useEffect(()=> {
+
+        let tempObj = {
+            quickAcces:builDerLocalData
+        }
+
+        setData({data: tempObj, isGet:false})
+    },[builDerLocalData]);
 
     return(
         <>
@@ -74,14 +83,21 @@ export default function FranApp ({crntList, setData}) {
                     </div>
                 </div>
 
-                <div className={`rightaSideC`}>
-                    <button>
+                <div className={`rightaSideC ${quickAcSetting.isFrequently ? "Active" : ""}`}>
+                    <button onClick={()=>{
+                        let tempObj = {
+                            quickAcSetting:{
+                                isFrequently:!quickAcSetting.isFrequently
+                            }
+                        }
+                        setData({data: tempObj , isGet: false})
+                    }}>
                         <p></p>
                     </button>
                 </div>
             </div>
             {
-                builDerLocalData.map((obj,index)=>(
+               !quickAcSetting.isFrequently && builDerLocalData.map((obj,index)=>(
                     <div key={index} className="controlleBoxA flex items-center flex-row gap-2">
                         <div className="imgHolder h-full flex-1 flex items-center justify-center">
                             <img src={`https://www.google.com/s2/favicons?domain=${obj.url}`} className="h-10! w-10!" alt="" />

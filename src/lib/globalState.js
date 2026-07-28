@@ -35,7 +35,9 @@ export const database = create((set, get) => ({
         x:150, y:250,
       }
     },
-   
+    "quickAcSetting":{
+      isFrequently: false
+    },
       "quickAcces":[
         {
           url: "https://mail.google.com/",

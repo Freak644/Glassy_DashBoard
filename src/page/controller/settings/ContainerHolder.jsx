@@ -5,7 +5,7 @@ import ContainerStructure from "./mgmtBuilder";
 import WeatherColtroller from "./weatherControl";
 
 export default function ContainerHolder () {
-    const {name, background, searchWid, clockWid, weatherWid, quickAcces} = database(stat=> stat.db);
+    const {name, background, searchWid, clockWid, weatherWid, quickAcSetting, quickAcces} = database(stat=> stat.db);
     let {setDB} = database();
     const containerRows = {
         
@@ -23,7 +23,7 @@ export default function ContainerHolder () {
                 <WeatherColtroller crntData={{weatherWid}} setData={setDB} />
             </div>
             <div className="controllerContainer">
-                <FranApp crntList={quickAcces} setData={setDB} />
+                <FranApp crntList={{quickAcces, quickAcSetting}} setData={setDB} />
             </div>
         </>
     )
