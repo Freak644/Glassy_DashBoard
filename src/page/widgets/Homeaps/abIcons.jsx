@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react"
 import ContainerHolder from "../../controller/settings/ContainerHolder";
 
 export default function AbsIcons () {
-    const [isTrue, setTrue] = useState(true);
+    const [isTrue, setTrue] = useState(false);
 
     const containerRef = useRef(null);
     const iconRef = useRef(null);

@@ -14,6 +14,8 @@ export default function FranApp ({crntList, setData}) {
         
     };
 
+    const getIcon = (url) => `chrome://favicon2/?size=128&pageUrl=${encodeURIComponent(url)}`;
+
     const saveUrl =  (inp) => {
        
         let {name, value} = inp;
@@ -100,7 +102,7 @@ export default function FranApp ({crntList, setData}) {
                !quickAcSetting.isFrequently && builDerLocalData.map((obj,index)=>(
                     <div key={index} className="controlleBoxA flex items-center flex-row gap-2">
                         <div className="imgHolder h-full flex-1 flex items-center justify-center">
-                            <img src={`https://www.google.com/s2/favicons?domain=${obj.url}`} className="h-10! w-10!" alt="" />
+                            <img src={getIcon(obj.url)} className="h-10! w-10!" alt="" />
                         </div>
                         <div className="inputHolder flex-5 flex items-center flex-row gap-2">
                             <input type="text" name={index.toString()} placeholder={obj.url} className="border-2 border-gray-400/10 h-10 rounded-lg p-2.5 w-4/5 placeholder:text-gray-500" />

@@ -63,6 +63,9 @@ export default function BookmarkList() {
                 {
                     Object.entries(bookList).map(([category, itmes]) => {
                         console.log(category,itmes)
+                        return(
+                            <p>Under development</p>
+                        )
                     })
                 }
                     

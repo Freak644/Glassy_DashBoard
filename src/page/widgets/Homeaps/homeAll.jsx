@@ -37,7 +37,8 @@ export default function AllAps() {
         if (isFrequently) {
             fetchTopSites();
         }
-    },[isFrequently])
+    },[isFrequently]);
+    
 
      return (
         <div className="h-18 w-70 rounded-lg allApps overflow-hidden blurBg absolute bottom-7 z-20 myShadow">

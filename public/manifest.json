@@ -2,13 +2,25 @@
   "manifest_version": 3,
   "name": "Glassy Dashboard",
   "version": "1.0.1",
-  "description": "Aura styled browser UI with custom dashboard tab.",
+  "description": "Aura styled browser UI with custom New Tab dashboard",
   "chrome_url_overrides": {
     "newtab": "index.html"
   },
   "permissions": [
     "bookmarks",
-    "history",
-    "topSites"
+    "topSites",
+    "favicon"
+  ],
+  "icons": [
+    {
+      "src": "https://i.postimg.cc/L4kDbPrj/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://i.postimg.cc/L4kDbPrj/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
   ]
 }

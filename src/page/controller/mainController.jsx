@@ -3,7 +3,7 @@ import { toggler } from "../../lib/globalToggles"
 import { icons } from "lucide-react";
 
 export default function Controller({settings}) {
-    const [toggleTool, setTT] = useState(true);
+    const [toggleTool, setTT] = useState(false);
     let {toggleTab} = toggler();
     const handleBg = ()=>{
         toggleTab({toggleVideo:true})
