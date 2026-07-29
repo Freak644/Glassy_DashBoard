@@ -14,7 +14,8 @@ export default function FranApp ({crntList, setData}) {
         
     };
 
-    const getIcon = (url) => `chrome://favicon2/?size=128&pageUrl=${encodeURIComponent(url)}`;
+    const getIcon = (url) =>
+    `https://www.google.com/s2/favicons?sz=512&domain_url=${encodeURIComponent(url)}`;
 
     const saveUrl =  (inp) => {
        

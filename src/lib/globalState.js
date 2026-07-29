@@ -36,6 +36,7 @@ export const database = create((set, get) => ({
       }
     },
     "quickAcSetting":{
+      showQuickApps:true,
       isFrequently: false
     },
       "quickAcces":[

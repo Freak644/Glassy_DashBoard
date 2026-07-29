@@ -12,7 +12,7 @@ export default function Controller({settings}) {
         { icon: "bx-edit", onClick: () => toggleTab({ toggleEdit: true }) },
         { icon: "bxl-github" },
         { icon: "bx-image", onClick: handleBg },
-        { icon: "bxs-bookmark-heart"},
+        { icon: "bxs-bookmark-heart", onClick: () => toggleTab({toggleBookmarks:true})},
         
     ];
     return(
@@ -20,6 +20,7 @@ export default function Controller({settings}) {
             <div className="control-panel">
                 
                 <p onClick={()=>setTT(prev=>!prev)} className="blurBg"><i>🛠️</i> <span>Tool</span></p>
+                
                 {items.map((item, i) => (
                     <button
                         key={i}
@@ -28,7 +29,7 @@ export default function Controller({settings}) {
                         style={{ "--i": i }}
                         onClick={item.onClick}
                     >
-                        <i className={`bx ${item.icon}`} />
+                        <i className={`bx ${item.icon} text-lg pointer-events-none`} />
                     </button>
                 ))}
             </div>

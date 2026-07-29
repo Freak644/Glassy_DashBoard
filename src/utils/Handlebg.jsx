@@ -28,7 +28,7 @@ export default function HandleBGUpload() {
             video.onloadedmetadata = () => {
                 URL.revokeObjectURL(video.src);
 
-                if (video.duration > 30) {
+                if (video.duration > 60) {
                     reject("video is too long, 30second is the limit");
                 } else {
                     resolve(true);
@@ -82,6 +82,7 @@ export default function HandleBGUpload() {
 
         const handleClick = (event) => {
             let traget = event.target.value;
+            // console.log(traget);
             if (tab && !tab.contains(event.target) && traget != "null" && traget != 2) {
                     toggleTab({ toggleVideo: false });
                     URL.revokeObjectURL(background.objUrl);

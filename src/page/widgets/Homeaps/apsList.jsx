@@ -35,7 +35,8 @@ export default function AppList () {
     },[inputVal,AllApps]);
 
 
-    const getIcon = (url) => `https://www.google.com/s2/favicons?sz=128&domain_url=${url}`;
+    const getIcon = (url) =>
+    `https://www.google.com/s2/favicons?sz=512&domain_url=${encodeURIComponent(url)}`;
 
     
 
