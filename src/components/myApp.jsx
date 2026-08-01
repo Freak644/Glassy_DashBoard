@@ -6,6 +6,7 @@ import '../assets/style/pasesTwo.css'
 
 export default function MyApp() {
     let {setDB} = database();
+    const crntTheme = database(stat=>stat.db.quickAcSetting.crntTheme);
     let {setApp} = Apps();
     let [isReady, setReady] = useState(false);
     useEffect(() => {
@@ -53,6 +54,10 @@ export default function MyApp() {
 
             setReady(true)
         }, []);
+
+        useEffect(()=>{
+            document.documentElement.setAttribute("data-theme", crntTheme);
+        },[crntTheme]);
     return(
         <>
         {

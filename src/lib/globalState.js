@@ -37,7 +37,8 @@ export const database = create((set, get) => ({
     },
     "quickAcSetting":{
       showQuickApps:true,
-      isFrequently: false
+      isFrequently: false,
+      crntTheme:"light"
     },
       "quickAcces":[
         {
@@ -59,7 +60,7 @@ export const database = create((set, get) => ({
       "topBookSlide":{
         isTrue:false,
         data:[]
-      }
+      },
   },
   
 
@@ -67,7 +68,7 @@ export const database = create((set, get) => ({
     const current = get().db;
     let {data,isGet} = obj;
 
-    
+   
 
     if (!data || Object.keys(data).length === 0) return;
     const newDb = {...current };

@@ -74,9 +74,42 @@ export default function FranApp ({crntList, setData}) {
         setData({data: tempObj, isGet:false})
     },[builDerLocalData]);
 
+    const changeTheme = () => {
+        const theme = quickAcSetting.crntTheme === "light" ? "dark" : "light";
+
+        let tempObj = {
+           quickAcSetting:{
+               ...quickAcSetting,
+               crntTheme:theme
+           }
+       }
+       setData({data: tempObj , isGet: false});
+    };
+
     return(
         <>
-            <p className="headingP">🤖 Home App's</p>
+            <p className="headingP">🤖 Home & Theme</p>
+
+            <div className="controlleBox">
+                <div className="leftaSideC">
+                    <div className="iconCon">🌙</div>
+                    <div className="textHolder">
+                        <p>Toggle Theme</p>
+                    <span>Click the button to toggle</span>
+                    </div>
+                </div>
+
+                <div className="rightaSideC">
+                    <div className="h-9 w-9 bg-blue-500/10 rounded-lg overflow-hidden">
+                        <div onClick={changeTheme} className={`h-9 w-15 rounded-md flex gap-3 items-center justify-center duration-400 transition-all ease-in-out cursor-pointer 
+                            ${quickAcSetting.crntTheme === "light" ? "-translate-x-7.5" : "translate-x-2"}`}>
+                            <i className="text-2xl pointer-events-none bx bxs-moon text-blue-400!"></i>
+                            <i className="text-2xl pointer-events-none bx bxs-sun text-amber-400!"></i>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
             <div className="controlleBox">
                 <div className="leftaSideC">
                     <div className="iconCon">🤖</div>
@@ -90,6 +123,7 @@ export default function FranApp ({crntList, setData}) {
                     <button onClick={()=>{
                         let tempObj = {
                             quickAcSetting:{
+                                ...quickAcSetting,
                                 isFrequently:!quickAcSetting.isFrequently
                             }
                         }
@@ -98,7 +132,33 @@ export default function FranApp ({crntList, setData}) {
                         <p></p>
                     </button>
                 </div>
+
             </div>
+            <div className="controlleBox">
+                <div className="leftaSideC">
+                    <div className="iconCon">🤖</div>
+                    <div className="textHolder">
+                        <p>Display Quick Access</p>
+                        <span>Show Popular Wesite on home</span>
+                    </div>
+                </div>
+
+                <div className={`rightaSideC ${quickAcSetting.showQuickApps ? "Active" : ""}`}>
+                    <button onClick={()=>{
+                        let tempObj = {
+                            quickAcSetting:{
+                                ...quickAcSetting,
+                            showQuickApps:!quickAcSetting.showQuickApps
+                            }
+                        }
+                        setData({data: tempObj , isGet: false})
+                    }}>
+                        <p></p>
+                    </button>
+                </div>
+
+            </div>
+
             {
                !quickAcSetting.isFrequently && builDerLocalData.map((obj,index)=>(
                     <div key={index} className="controlleBoxA flex items-center flex-row gap-2">
@@ -116,6 +176,7 @@ export default function FranApp ({crntList, setData}) {
                     </div>
                 ))
             }
+            
         </>
     )
 }
