@@ -23,9 +23,7 @@ export default function WeatherCard() {
 
         const { city, apiKey } = myData;
 
-        const interval = setInterval(() => {
             featchWeather(city, apiKey);
-        }, 6000);
 
         return () => clearInterval(interval);
     }, [myData, weatherData]);
