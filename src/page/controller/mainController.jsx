@@ -10,7 +10,7 @@ export default function Controller({settings}) {
     }
     const items = [
         { icon: "bx-edit", onClick: () => toggleTab({ toggleEdit: true }) },
-        { icon: "bxl-github" },
+        { icon: "bxl-github", onClick: () => window.open("https://github.com/Freak644", "_blank") },
         { icon: "bx-image", onClick: handleBg },
         { icon: "bxs-bookmark-heart", onClick: () => toggleTab({toggleBookmarks:true})},
         

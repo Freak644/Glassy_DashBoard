@@ -181,15 +181,18 @@
 
 .neonTxt {
     background: linear-gradient(
-        90deg,
-        #851affcf,
-        #ff018dd5,
-        #7706d4,
-        #e7ee22bc,
+        136deg,
+        #7c3aed,
+        #8b5cf6,
+        #3b82f6,
+        #06b5d48d,
+        #22d3eea7,
+        #06b5d491,
+        #3b82f6,
         #8b5cf6
     );
 
-    background-size: 250% auto;
+    background-size: 200% auto;
 
     -webkit-background-clip: text;
     background-clip: text;
@@ -203,7 +206,7 @@
         background-position: 0% 50%;
     }
     50% {
-        background-position: 250% 50%;
+        background-position: 200% 50%;
     }
 }
 
@@ -371,7 +374,19 @@
 .controlleBoxA {
     height: 90px;
     width: 100%;
-    background: linear-gradient(136deg, rgba(132, 132, 132, 0.21), rgba(33, 20, 37, 0.259), rgba(34, 3, 41, 0.368));
+    background: linear-gradient(136deg, rgba(132, 132, 132, 0.21), rgba(33, 20, 37, 0.259), rgba(54, 3, 41, 0.912));
     border-radius: 10px;
-    border: 1px solid rgba(48, 14, 79, 0.207);
+   
+}
+
+.finalDiv{
+    font-size: 14px;
+    word-wrap: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    p{
+        color: gray;
+    }
 }

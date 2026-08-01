@@ -1,6 +1,7 @@
 import { database } from "../../../lib/globalState";
 import ClockCotroll from "./clockControl";
 import FranApp from "./customApp";
+import DevInfo from "./devLoaperInfo";
 import ContainerStructure from "./mgmtBuilder";
 import WeatherColtroller from "./weatherControl";
 
@@ -24,6 +25,9 @@ export default function ContainerHolder () {
             </div>
             <div className="controllerContainer">
                 <FranApp crntList={{quickAcces, quickAcSetting}} setData={setDB} />
+            </div>
+            <div className="controllerContainer">
+                <DevInfo />
             </div>
         </>
     )
